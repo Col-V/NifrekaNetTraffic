@@ -1,0 +1,47 @@
+﻿<Window x:Class="NifrekaNetTraffic.WindowAbout"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p="clr-namespace:NifrekaNetTraffic.Properties"
+        xmlns:local="clr-namespace:NifrekaNetTraffic"
+        mc:Ignorable="d"
+        Title="{x:Static p:Resources.dlgAbout_Title}" 
+        ResizeMode="NoResize" 
+        SizeToContent="WidthAndHeight" WindowStyle="None" KeyUp="Window_KeyUp"
+        
+        >
+    
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF002173"/>
+                <GradientStop Color="#FF4F82FF" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Margin="20,20,20,20">
+
+            <Image HorizontalAlignment="Left" Margin="0" Name="image1" Width="58" VerticalAlignment="Top" SnapsToDevicePixels="False" Source="/Resources/NifrekaNetTraffic_256x256.png" />
+
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,0,0,0" Width="300" >
+
+                <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="NifrekaNetTraffic" FontSize="20" FontFamily="Arial" Margin="0" FontWeight="Bold" Foreground="White"/>
+
+                <StackPanel Margin="0,5,0,0" >
+                    <TextBlock x:Name="textBlockVersionBuild" TextWrapping="Wrap" Text="Version 1.0 - Build 001" FontSize="12" FontFamily="Arial" Foreground="White" Margin="0,0,0,0"/>
+                    <TextBlock x:Name="textBlockCopyRight" TextWrapping="Wrap" Text="(c) 2022 nifreka.nl" FontSize="12" FontFamily="Arial" Foreground="White" Margin="0,0,0,0"/>
+
+                </StackPanel>
+
+                <TextBlock x:Name="textBoxTime" HorizontalAlignment="Left" Text="00:00:00" VerticalAlignment="Top" FontSize="25"  FontFamily="Arial" Foreground="#FFFFF200" Margin="0,20,0,0"/>
+                <TextBlock x:Name="textBoxDate" HorizontalAlignment="Left" Text="Donnerstag, 14. September" VerticalAlignment="Top" FontSize="14" FontFamily="Arial" Foreground="#FFFFF200"/>
+
+                <Button x:Name="button_OK" Content="OK" Width="80" HorizontalAlignment="Right" Click="Button_OK_Click" Margin="0,10,0,0" VerticalAlignment="Top"   />
+            </StackPanel>
+
+        </StackPanel>
+
+        
+    </Grid>
+</Window>
