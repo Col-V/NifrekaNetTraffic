@@ -37,7 +37,8 @@ NET 6.0 Runtime
 ---
 nifreka.nl
 
-https://nifreka.nl/nnt/index.html
+More information and download of the application here:
+https://nifreka.nl/nnt/
 
 
 
