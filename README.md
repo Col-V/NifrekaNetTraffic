@@ -2,7 +2,7 @@
 NifrekaNetTraffic is a simple WPF desktop program for Windows 10 and Windows 11 and displays information about the current network interface traffic in compact, graphical and tablular representation.
 
 NifrekaNetTraffic uses very little CPU resources, so it can run even on less powerful elder computers.\
-To monitor the network performance NifrekaNetTraffic logs the data approximately every 1 second, currently limited to 86400 intervals (= 1day)
+To monitor the network performance NifrekaNetTraffic logs the data approximately every 1 second, currently limited to 86400 intervals (= 1 day).
 \
 \
 NifrekaNetTraffic while watching a livestream\
