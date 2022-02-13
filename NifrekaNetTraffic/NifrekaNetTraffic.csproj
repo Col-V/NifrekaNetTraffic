@@ -22,15 +22,20 @@
 		<ProduceReferenceAssembly>false</ProduceReferenceAssembly>
 	</PropertyGroup>
 
+
+
 	<ItemGroup>
 	  <Content Include="NifrekaNetTraffic.ico" />
 	  <Resource Include="Resources\Close_18.png" />
+	  <Resource Include="Resources\Graph_90.png" />
 	  <Resource Include="Resources\NifrekaNetTraffic_18x18.png" />
 	  <Resource Include="Resources\NifrekaNetTraffic_256x256.png" />
 	  <Resource Include="Resources\PositionBottomLeft.png" />
 	  <Resource Include="Resources\PositionBottomRight.png" />
 	  <Resource Include="Resources\PositionTopLeft.png" />
 	  <Resource Include="Resources\PositionTopRight.png" />
+	  <Resource Include="Resources\Table_90.png" />
+	  <Resource Include="Resources\Zeichen_101_Gefahrstelle.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -62,5 +67,10 @@
 	    <LastGenOutput>Settings.Designer.cs</LastGenOutput>
 	  </None>
 	</ItemGroup>
+
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	  <Exec Command="if $(ConfigurationName) == Release (&#xD;&#xA;call &quot;$(SolutionDir)_PostBuildBatch\copy_to_update_package.bat&quot;&#xD;&#xA;)" />
+	</Target>
 
 </Project>

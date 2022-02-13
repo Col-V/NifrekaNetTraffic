@@ -8,4 +8,6 @@ namespace NifrekaNetTraffic
 {
     public enum Corner { NoCorner = 0, TopLeft = 1, TopRight = 2, BottomRight = 3, BottomLeft = 4, Center = 5 };
 
+    
+
 }

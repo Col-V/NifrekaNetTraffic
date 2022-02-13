@@ -7,6 +7,14 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="WindowLogGraph.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="WindowLogTable.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.de-DE.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -15,6 +23,15 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="DialogYesNo.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="WindowLogGraph.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="WindowLogTable.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="WindowMain.xaml">
       <SubType>Designer</SubType>
     </Page>

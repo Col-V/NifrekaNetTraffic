@@ -25,7 +25,6 @@ namespace NifrekaNetTraffic
             this.MouseLeave += new System.Windows.Input.MouseEventHandler(this.LabelClose_MouseLeave);
             this.MouseLeftButtonDown += new System.Windows.Input.MouseButtonEventHandler(this.LabelClose_MouseLeftButtonDown);
             this.MouseLeftButtonUp += new System.Windows.Input.MouseButtonEventHandler(this.LabelClose_MouseLeftButtonUp);
-
         }
 
         // ========================================================
@@ -37,7 +36,7 @@ namespace NifrekaNetTraffic
         // ========================================================
         public void SetVisible()
         {
-            this.Background = System.Windows.Media.Brushes.HotPink;
+            this.Background = System.Windows.Media.Brushes.Red;
             this.Foreground = System.Windows.Media.Brushes.White;
             this.Visibility = Visibility.Visible;
         }
@@ -54,14 +53,16 @@ namespace NifrekaNetTraffic
 
             this.Background = System.Windows.Media.Brushes.Red;
             this.Foreground = System.Windows.Media.Brushes.White;
+            this.BorderBrush = System.Windows.Media.Brushes.White;
             e.Handled = true;
         }
 
         // ========================================================
         private void LabelClose_MouseLeave(object sender, MouseEventArgs e)
         {
-            this.Background = System.Windows.Media.Brushes.HotPink;
+            this.Background = System.Windows.Media.Brushes.Red;
             this.Foreground = System.Windows.Media.Brushes.White;
+            this.BorderBrush = System.Windows.Media.Brushes.Red;
             e.Handled = true;
         }
 

@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace NifrekaNetTraffic
 {
-    // #####################
-    // class ProcessList
-    // #####################
+
+    // ###############################################################
     public class NetAdapterList : ObservableCollection<NetAdapter>
     {
 
@@ -27,10 +26,7 @@ namespace NifrekaNetTraffic
     }
 
 
-
-    // #####################
-    // class NetAdapter
-    // #####################
+    // ###############################################################
     public class NetAdapter
     {
         public NetworkInterface networkInterface;
@@ -39,22 +35,30 @@ namespace NifrekaNetTraffic
         private long bytesSent;
         public long BytesSent
         {
-            get { return bytesSent; }
-            set { bytesSent = value; }
+            get {
+                long bytesSent = 0;
+                if (networkInterface != null)
+                {
+                    bytesSent = networkInterface.GetIPStatistics().BytesSent;
+                }
+
+                return bytesSent; 
+            }
         }
 
         // ===
-        private long bytesReceived;
         public long BytesReceived
         {
-            get { return bytesReceived; }
-            set { bytesReceived = value; }
+            get {
+                long bytesReceived = 0;
+                if (networkInterface != null)
+                {
+                    bytesReceived = networkInterface.GetIPStatistics().BytesReceived;
+                }
+                return bytesReceived; }
         }
 
 
-
-
-        private long _bytesReceived;
 
         // ========================
         // ctor

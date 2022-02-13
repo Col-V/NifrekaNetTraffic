@@ -18,10 +18,8 @@ using Nifreka;
 
 namespace NifrekaNetTraffic
 {
-    /// <summary>
-    /// Interaction logic for WindowAbout.xaml
-    /// </summary>
-    // ========================================================
+
+    // ###############################################################
     public partial class WindowAbout : Window
     {
         private readonly DispatcherTimer dispatcherTimer;
