@@ -10,11 +10,9 @@ using System.Windows.Media.Imaging;
 
 namespace Nifreka
 {
+    // ###############################################################
     public class NifrekaPathUtil
     {
-
-
-
         // ---------------------------------------------------------------------
         static public String GetAppAbsolutePath()
         {

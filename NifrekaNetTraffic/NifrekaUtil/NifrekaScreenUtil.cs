@@ -9,6 +9,7 @@ using System.Windows;
 
 namespace Nifreka
 {
+    // ###############################################################
     public class NifrekaScreenUtil
     {
         // ====================================
