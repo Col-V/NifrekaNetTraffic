@@ -10,9 +10,12 @@
     </LinearGradientBrush>
     <SolidColorBrush x:Key="ListView_DefaultControlForegroundBrush" Color="#FF10257F"/>
 
+    <Style TargetType="ScrollBar">
+        <Setter Property="Background" Value="#FF7D7D7D"/>
+    </Style>
 
 
-  <!-- General Style for all items in the ListView control -->
+    <!-- General Style for all items in the ListView control -->
     <Style TargetType="{x:Type ListViewItem}" >
         <!-- 
             This allows for using an item's HorizontalAlignment property to align items within 
@@ -80,7 +83,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="BorderBrush" Value="Black" />
-        <Setter Property ="Background" Value ="LightSlateGray" />
+        <Setter Property ="Background" Value ="#FF606060" />
         <Setter Property ="Foreground" Value ="White" />
         <Setter Property ="FontWeight" Value ="Bold" />
 
@@ -150,8 +153,8 @@
                 <Setter Property="Background" TargetName="HeaderBorder">
                     <Setter.Value>
                         <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                            <GradientStop Color="Aquamarine" Offset="0"/>
-                            <GradientStop Color="Aquamarine" Offset="1"/>
+                            <GradientStop Color="DarkGray" Offset="0"/>
+                            <GradientStop Color="DarkGray" Offset="1"/>
                         </LinearGradientBrush>
                     </Setter.Value>
                 </Setter>
@@ -164,8 +167,8 @@
                 <Setter Property="Background" TargetName="HeaderBorder">
                     <Setter.Value>
                         <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                            <GradientStop Color="Aquamarine" Offset="0"/>
-                            <GradientStop Color="Aquamarine" Offset="1"/>
+                            <GradientStop Color="DarkGray" Offset="0"/>
+                            <GradientStop Color="DarkGray" Offset="1"/>
                         </LinearGradientBrush>
                     </Setter.Value>
                 </Setter>
