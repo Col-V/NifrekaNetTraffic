@@ -126,6 +126,9 @@
   <data name="DialogMissingFile_file_missing" xml:space="preserve">
     <value>The following file is missing:</value>
   </data>
+  <data name="Dialog_ClearLog_Question" xml:space="preserve">
+    <value>Do you really want to delete the Log file?</value>
+  </data>
   <data name="dlgAbout_Title" xml:space="preserve">
     <value>About NifrekaNetTraffic</value>
   </data>
@@ -153,6 +156,12 @@
   <data name="dlgNewVersion_8_YesNo_Now" xml:space="preserve">
     <value>Update now</value>
   </data>
+  <data name="dlgYesNo_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="dlgYesNo_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
   <data name="filename_Readme_rtf" xml:space="preserve">
     <value>NifrekaNetTraffic-ReadMe.rtf</value>
   </data>
@@ -169,25 +178,22 @@
     <value>About NifrekaNetTraffic...</value>
   </data>
   <data name="main_context_Close" xml:space="preserve">
-    <value>Close</value>
+    <value>Exit</value>
+  </data>
+  <data name="main_context_DefaultLayout" xml:space="preserve">
+    <value>Default Layout</value>
   </data>
   <data name="main_context_GotoHomePage" xml:space="preserve">
     <value>Goto NifrekaNetTraffic Webpage</value>
   </data>
+  <data name="main_context_OpenGraph" xml:space="preserve">
+    <value>Open Graph</value>
+  </data>
   <data name="main_context_OpenReadme" xml:space="preserve">
     <value>Open Readme</value>
   </data>
-  <data name="main_context_Position_BottomLeft" xml:space="preserve">
-    <value>Bottom left</value>
-  </data>
-  <data name="main_context_Position_BottomRight" xml:space="preserve">
-    <value>Bottom right</value>
-  </data>
-  <data name="main_context_Position_TopLeft" xml:space="preserve">
-    <value>Top left</value>
-  </data>
-  <data name="main_context_Position_TopRight" xml:space="preserve">
-    <value>Top right</value>
+  <data name="main_context_OpenTable" xml:space="preserve">
+    <value>Open Table</value>
   </data>
   <data name="main_context_Topmost" xml:space="preserve">
     <value>Topmost</value>
@@ -201,7 +207,82 @@
   <data name="toolTip_Sent" xml:space="preserve">
     <value>Sent</value>
   </data>
+  <data name="WindowLogGraph_context_Pause" xml:space="preserve">
+    <value>Pause display</value>
+  </data>
+  <data name="WindowLogTable_ClearLog" xml:space="preserve">
+    <value>Clear Log</value>
+  </data>
+  <data name="WindowLogTable_ExportAsText" xml:space="preserve">
+    <value>Export as Text</value>
+  </data>
+  <data name="WindowLogTable_Log" xml:space="preserve">
+    <value>Log total-&gt;</value>
+  </data>
+  <data name="WindowLogTable_NetworkInterface" xml:space="preserve">
+    <value>NetworkInterface</value>
+  </data>
+  <data name="WindowLogTable_OpenLogDir" xml:space="preserve">
+    <value>Log Directory</value>
+  </data>
+  <data name="WindowLogTable_Selection" xml:space="preserve">
+    <value>Selection -&gt;</value>
+  </data>
+  <data name="WindowLogTable_Total" xml:space="preserve">
+    <value>Since activated-&gt;</value>
+  </data>
+  <data name="WindowLog_context_DefaultLayout" xml:space="preserve">
+    <value>Default Layout</value>
+  </data>
+  <data name="WindowLog_context_SyncLogs" xml:space="preserve">
+    <value>Sync Logs</value>
+  </data>
+  <data name="Window_Position_BottomLeft" xml:space="preserve">
+    <value>Bottom left</value>
+  </data>
+  <data name="Window_Position_BottomRight" xml:space="preserve">
+    <value>Bottom right</value>
+  </data>
+  <data name="Window_Position_TopLeft" xml:space="preserve">
+    <value>Top left</value>
+  </data>
+  <data name="Window_Position_TopRight" xml:space="preserve">
+    <value>Top right</value>
+  </data>
+  <data name="wind_graph_bytesPerSecond" xml:space="preserve">
+    <value>B/s</value>
+  </data>
+  <data name="wind_graph_EndOffset" xml:space="preserve">
+    <value>End:</value>
+  </data>
+  <data name="wind_graph_ReceivedMax" xml:space="preserve">
+    <value>Received Max:</value>
+  </data>
+  <data name="wind_graph_SentMax" xml:space="preserve">
+    <value>Sent Max:</value>
+  </data>
+  <data name="wind_graph_StartOffset" xml:space="preserve">
+    <value>Start:</value>
+  </data>
   <data name="wind_ReadMe_Title" xml:space="preserve">
     <value>NifrekaNetTraffic - ReadMe</value>
+  </data>
+  <data name="wind_table_AutoScroll" xml:space="preserve">
+    <value>AutoScroll</value>
+  </data>
+  <data name="wind_table_Count" xml:space="preserve">
+    <value>Count:</value>
+  </data>
+  <data name="wind_table_DateTime" xml:space="preserve">
+    <value>Date - Time</value>
+  </data>
+  <data name="wind_table_Interval" xml:space="preserve">
+    <value>Interval</value>
+  </data>
+  <data name="wind_table_ReceivedBytes" xml:space="preserve">
+    <value>Received [B]</value>
+  </data>
+  <data name="wind_table_SentBytes" xml:space="preserve">
+    <value>Sent[B]</value>
   </data>
 </root>

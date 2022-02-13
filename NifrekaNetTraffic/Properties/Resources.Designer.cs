@@ -61,6 +61,15 @@ namespace NifrekaNetTraffic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you really want to delete the Log file?.
+        /// </summary>
+        public static string Dialog_ClearLog_Question {
+            get {
+                return ResourceManager.GetString("Dialog_ClearLog_Question", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Quit.
         /// </summary>
         public static string DialogMissingFile_button_quit {
@@ -169,6 +178,24 @@ namespace NifrekaNetTraffic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string dlgYesNo_Cancel {
+            get {
+                return ResourceManager.GetString("dlgYesNo_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        public static string dlgYesNo_OK {
+            get {
+                return ResourceManager.GetString("dlgYesNo_OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to NifrekaNetTraffic-ReadMe.rtf.
         /// </summary>
         public static string filename_Readme_rtf {
@@ -214,11 +241,20 @@ namespace NifrekaNetTraffic.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Close.
+        ///   Looks up a localized string similar to Exit.
         /// </summary>
         public static string main_context_Close {
             get {
                 return ResourceManager.GetString("main_context_Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default Layout.
+        /// </summary>
+        public static string main_context_DefaultLayout {
+            get {
+                return ResourceManager.GetString("main_context_DefaultLayout", resourceCulture);
             }
         }
         
@@ -232,6 +268,15 @@ namespace NifrekaNetTraffic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Open Graph.
+        /// </summary>
+        public static string main_context_OpenGraph {
+            get {
+                return ResourceManager.GetString("main_context_OpenGraph", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open Readme.
         /// </summary>
         public static string main_context_OpenReadme {
@@ -241,38 +286,11 @@ namespace NifrekaNetTraffic.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bottom left.
+        ///   Looks up a localized string similar to Open Table.
         /// </summary>
-        public static string main_context_Position_BottomLeft {
+        public static string main_context_OpenTable {
             get {
-                return ResourceManager.GetString("main_context_Position_BottomLeft", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bottom right.
-        /// </summary>
-        public static string main_context_Position_BottomRight {
-            get {
-                return ResourceManager.GetString("main_context_Position_BottomRight", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Top left.
-        /// </summary>
-        public static string main_context_Position_TopLeft {
-            get {
-                return ResourceManager.GetString("main_context_Position_TopLeft", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Top right.
-        /// </summary>
-        public static string main_context_Position_TopRight {
-            get {
-                return ResourceManager.GetString("main_context_Position_TopRight", resourceCulture);
+                return ResourceManager.GetString("main_context_OpenTable", resourceCulture);
             }
         }
         
@@ -313,11 +331,236 @@ namespace NifrekaNetTraffic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to B/s.
+        /// </summary>
+        public static string wind_graph_bytesPerSecond {
+            get {
+                return ResourceManager.GetString("wind_graph_bytesPerSecond", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End:.
+        /// </summary>
+        public static string wind_graph_EndOffset {
+            get {
+                return ResourceManager.GetString("wind_graph_EndOffset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Received Max:.
+        /// </summary>
+        public static string wind_graph_ReceivedMax {
+            get {
+                return ResourceManager.GetString("wind_graph_ReceivedMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sent Max:.
+        /// </summary>
+        public static string wind_graph_SentMax {
+            get {
+                return ResourceManager.GetString("wind_graph_SentMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start:.
+        /// </summary>
+        public static string wind_graph_StartOffset {
+            get {
+                return ResourceManager.GetString("wind_graph_StartOffset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to NifrekaNetTraffic - ReadMe.
         /// </summary>
         public static string wind_ReadMe_Title {
             get {
                 return ResourceManager.GetString("wind_ReadMe_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AutoScroll.
+        /// </summary>
+        public static string wind_table_AutoScroll {
+            get {
+                return ResourceManager.GetString("wind_table_AutoScroll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Count:.
+        /// </summary>
+        public static string wind_table_Count {
+            get {
+                return ResourceManager.GetString("wind_table_Count", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date - Time.
+        /// </summary>
+        public static string wind_table_DateTime {
+            get {
+                return ResourceManager.GetString("wind_table_DateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interval.
+        /// </summary>
+        public static string wind_table_Interval {
+            get {
+                return ResourceManager.GetString("wind_table_Interval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Received [B].
+        /// </summary>
+        public static string wind_table_ReceivedBytes {
+            get {
+                return ResourceManager.GetString("wind_table_ReceivedBytes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sent[B].
+        /// </summary>
+        public static string wind_table_SentBytes {
+            get {
+                return ResourceManager.GetString("wind_table_SentBytes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bottom left.
+        /// </summary>
+        public static string Window_Position_BottomLeft {
+            get {
+                return ResourceManager.GetString("Window_Position_BottomLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bottom right.
+        /// </summary>
+        public static string Window_Position_BottomRight {
+            get {
+                return ResourceManager.GetString("Window_Position_BottomRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Top left.
+        /// </summary>
+        public static string Window_Position_TopLeft {
+            get {
+                return ResourceManager.GetString("Window_Position_TopLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Top right.
+        /// </summary>
+        public static string Window_Position_TopRight {
+            get {
+                return ResourceManager.GetString("Window_Position_TopRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default Layout.
+        /// </summary>
+        public static string WindowLog_context_DefaultLayout {
+            get {
+                return ResourceManager.GetString("WindowLog_context_DefaultLayout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sync Logs.
+        /// </summary>
+        public static string WindowLog_context_SyncLogs {
+            get {
+                return ResourceManager.GetString("WindowLog_context_SyncLogs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pause display.
+        /// </summary>
+        public static string WindowLogGraph_context_Pause {
+            get {
+                return ResourceManager.GetString("WindowLogGraph_context_Pause", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear Log.
+        /// </summary>
+        public static string WindowLogTable_ClearLog {
+            get {
+                return ResourceManager.GetString("WindowLogTable_ClearLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export as Text.
+        /// </summary>
+        public static string WindowLogTable_ExportAsText {
+            get {
+                return ResourceManager.GetString("WindowLogTable_ExportAsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log total-&gt;.
+        /// </summary>
+        public static string WindowLogTable_Log {
+            get {
+                return ResourceManager.GetString("WindowLogTable_Log", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NetworkInterface.
+        /// </summary>
+        public static string WindowLogTable_NetworkInterface {
+            get {
+                return ResourceManager.GetString("WindowLogTable_NetworkInterface", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log Directory.
+        /// </summary>
+        public static string WindowLogTable_OpenLogDir {
+            get {
+                return ResourceManager.GetString("WindowLogTable_OpenLogDir", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selection -&gt;.
+        /// </summary>
+        public static string WindowLogTable_Selection {
+            get {
+                return ResourceManager.GetString("WindowLogTable_Selection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Since activated-&gt;.
+        /// </summary>
+        public static string WindowLogTable_Total {
+            get {
+                return ResourceManager.GetString("WindowLogTable_Total", resourceCulture);
             }
         }
     }
