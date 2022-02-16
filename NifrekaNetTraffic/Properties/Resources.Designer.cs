@@ -61,11 +61,83 @@ namespace NifrekaNetTraffic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Check for Update at startup.
+        /// </summary>
+        public static string CheckForUpdateAuto {
+            get {
+                return ResourceManager.GetString("CheckForUpdateAuto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check for Update now.
+        /// </summary>
+        public static string CheckForUpdateNow {
+            get {
+                return ResourceManager.GetString("CheckForUpdateNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you really want to delete the Log file?.
         /// </summary>
         public static string Dialog_ClearLog_Question {
             get {
                 return ResourceManager.GetString("Dialog_ClearLog_Question", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Installed version:.
+        /// </summary>
+        public static string Dialog_NewVersionAvailable_LabelInstalledVersion {
+            get {
+                return ResourceManager.GetString("Dialog_NewVersionAvailable_LabelInstalledVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version on server:.
+        /// </summary>
+        public static string Dialog_NewVersionAvailable_LabelServerVersion {
+            get {
+                return ResourceManager.GetString("Dialog_NewVersionAvailable_LabelServerVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string Dialog_NewVersionAvailable_No {
+            get {
+                return ResourceManager.GetString("Dialog_NewVersionAvailable_No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A newer version of NifrekaNetTraffic is available..
+        /// </summary>
+        public static string Dialog_NewVersionAvailable_Notify {
+            get {
+                return ResourceManager.GetString("Dialog_NewVersionAvailable_Notify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open NifrekaNetTraffic webpage?.
+        /// </summary>
+        public static string Dialog_NewVersionAvailable_Question {
+            get {
+                return ResourceManager.GetString("Dialog_NewVersionAvailable_Question", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ja.
+        /// </summary>
+        public static string Dialog_NewVersionAvailable_Yes {
+            get {
+                return ResourceManager.GetString("Dialog_NewVersionAvailable_Yes", resourceCulture);
             }
         }
         
@@ -97,101 +169,65 @@ namespace NifrekaNetTraffic.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About NifrekaNetTraffic.
-        /// </summary>
-        public static string dlgAbout_Title {
-            get {
-                return ResourceManager.GetString("dlgAbout_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to A newer version of NifrekaNetTraffic is available..
-        /// </summary>
-        public static string dlgNewVersion_1_YesNo {
-            get {
-                return ResourceManager.GetString("dlgNewVersion_1_YesNo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Installed version:.
         /// </summary>
-        public static string dlgNewVersion_2_YesNo {
+        public static string DialogVersionUpToDate_LabelInstalledVersion {
             get {
-                return ResourceManager.GetString("dlgNewVersion_2_YesNo", resourceCulture);
+                return ResourceManager.GetString("DialogVersionUpToDate_LabelInstalledVersion", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 0.0.000.
+        ///   Looks up a localized string similar to Version on server:.
         /// </summary>
-        public static string dlgNewVersion_3_YesNo {
+        public static string DialogVersionUpToDate_LabelServerVersion {
             get {
-                return ResourceManager.GetString("dlgNewVersion_3_YesNo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to New version:.
-        /// </summary>
-        public static string dlgNewVersion_4_YesNo {
-            get {
-                return ResourceManager.GetString("dlgNewVersion_4_YesNo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 0.0.000.
-        /// </summary>
-        public static string dlgNewVersion_5_YesNo {
-            get {
-                return ResourceManager.GetString("dlgNewVersion_5_YesNo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to It is recomended that you update to the new version now..
-        /// </summary>
-        public static string dlgNewVersion_6_YesNo {
-            get {
-                return ResourceManager.GetString("dlgNewVersion_6_YesNo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Later.
-        /// </summary>
-        public static string dlgNewVersion_7_YesNo_Later {
-            get {
-                return ResourceManager.GetString("dlgNewVersion_7_YesNo_Later", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Update now.
-        /// </summary>
-        public static string dlgNewVersion_8_YesNo_Now {
-            get {
-                return ResourceManager.GetString("dlgNewVersion_8_YesNo_Now", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cancel.
-        /// </summary>
-        public static string dlgYesNo_Cancel {
-            get {
-                return ResourceManager.GetString("dlgYesNo_Cancel", resourceCulture);
+                return ResourceManager.GetString("DialogVersionUpToDate_LabelServerVersion", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to OK.
         /// </summary>
-        public static string dlgYesNo_OK {
+        public static string DialogVersionUpToDate_OK {
             get {
-                return ResourceManager.GetString("dlgYesNo_OK", resourceCulture);
+                return ResourceManager.GetString("DialogVersionUpToDate_OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No newer version of NifrekaNetTraffic available..
+        /// </summary>
+        public static string DialogVersionUpToDate_OK_Notify {
+            get {
+                return ResourceManager.GetString("DialogVersionUpToDate_OK_Notify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string DialogYesNo_No {
+            get {
+                return ResourceManager.GetString("DialogYesNo_No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string DialogYesNo_Yes {
+            get {
+                return ResourceManager.GetString("DialogYesNo_Yes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About NifrekaNetTraffic.
+        /// </summary>
+        public static string dlgAbout_Title {
+            get {
+                return ResourceManager.GetString("dlgAbout_Title", resourceCulture);
             }
         }
         
@@ -259,7 +295,7 @@ namespace NifrekaNetTraffic.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Goto NifrekaNetTraffic Webpage.
+        ///   Looks up a localized string similar to Goto NifrekaNetTraffic Webpage....
         /// </summary>
         public static string main_context_GotoHomePage {
             get {

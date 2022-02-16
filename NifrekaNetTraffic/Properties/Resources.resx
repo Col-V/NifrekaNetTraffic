@@ -147,11 +147,11 @@
   <data name="DialogYesNo_No" xml:space="preserve">
     <value>No</value>
   </data>
-  <data name="DialogYesNo_Question_ClearLog" xml:space="preserve">
-    <value>Do you really want to delete the Log file?</value>
-  </data>
   <data name="DialogYesNo_Yes" xml:space="preserve">
     <value>Yes</value>
+  </data>
+  <data name="Dialog_ClearLog_Question" xml:space="preserve">
+    <value>Do you really want to delete the Log file?</value>
   </data>
   <data name="Dialog_NewVersionAvailable_LabelInstalledVersion" xml:space="preserve">
     <value>Installed version:</value>
