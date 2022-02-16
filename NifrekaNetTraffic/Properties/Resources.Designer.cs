@@ -79,15 +79,6 @@ namespace NifrekaNetTraffic.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do you really want to delete the Log file?.
-        /// </summary>
-        public static string Dialog_ClearLog_Question {
-            get {
-                return ResourceManager.GetString("Dialog_ClearLog_Question", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Installed version:.
         /// </summary>
         public static string Dialog_NewVersionAvailable_LabelInstalledVersion {
@@ -138,6 +129,15 @@ namespace NifrekaNetTraffic.Properties {
         public static string Dialog_NewVersionAvailable_Yes {
             get {
                 return ResourceManager.GetString("Dialog_NewVersionAvailable_Yes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you really want to delete the Log file?.
+        /// </summary>
+        public static string Dialog_Question_ClearLog {
+            get {
+                return ResourceManager.GetString("Dialog_Question_ClearLog", resourceCulture);
             }
         }
         
