@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CheckForUpdateAuto" xml:space="preserve">
+    <value>Check for Update at startup</value>
+  </data>
+  <data name="CheckForUpdateNow" xml:space="preserve">
+    <value>Check for Update now</value>
+  </data>
   <data name="DialogMissingFile_button_quit" xml:space="preserve">
     <value>Quit</value>
   </data>
@@ -126,41 +132,47 @@
   <data name="DialogMissingFile_file_missing" xml:space="preserve">
     <value>The following file is missing:</value>
   </data>
-  <data name="Dialog_ClearLog_Question" xml:space="preserve">
+  <data name="DialogVersionUpToDate_LabelInstalledVersion" xml:space="preserve">
+    <value>Installed version:</value>
+  </data>
+  <data name="DialogVersionUpToDate_LabelServerVersion" xml:space="preserve">
+    <value>Version on server:</value>
+  </data>
+  <data name="DialogVersionUpToDate_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="DialogVersionUpToDate_OK_Notify" xml:space="preserve">
+    <value>No newer version of NifrekaNetTraffic available.</value>
+  </data>
+  <data name="DialogYesNo_No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="DialogYesNo_Question_ClearLog" xml:space="preserve">
     <value>Do you really want to delete the Log file?</value>
+  </data>
+  <data name="DialogYesNo_Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="Dialog_NewVersionAvailable_LabelInstalledVersion" xml:space="preserve">
+    <value>Installed version:</value>
+  </data>
+  <data name="Dialog_NewVersionAvailable_LabelServerVersion" xml:space="preserve">
+    <value>Version on server:</value>
+  </data>
+  <data name="Dialog_NewVersionAvailable_No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Dialog_NewVersionAvailable_Notify" xml:space="preserve">
+    <value>A newer version of NifrekaNetTraffic is available.</value>
+  </data>
+  <data name="Dialog_NewVersionAvailable_Question" xml:space="preserve">
+    <value>Open NifrekaNetTraffic webpage?</value>
+  </data>
+  <data name="Dialog_NewVersionAvailable_Yes" xml:space="preserve">
+    <value>Ja</value>
   </data>
   <data name="dlgAbout_Title" xml:space="preserve">
     <value>About NifrekaNetTraffic</value>
-  </data>
-  <data name="dlgNewVersion_1_YesNo" xml:space="preserve">
-    <value>A newer version of NifrekaNetTraffic is available.</value>
-  </data>
-  <data name="dlgNewVersion_2_YesNo" xml:space="preserve">
-    <value>Installed version:</value>
-  </data>
-  <data name="dlgNewVersion_3_YesNo" xml:space="preserve">
-    <value>0.0.000</value>
-  </data>
-  <data name="dlgNewVersion_4_YesNo" xml:space="preserve">
-    <value>New version:</value>
-  </data>
-  <data name="dlgNewVersion_5_YesNo" xml:space="preserve">
-    <value>0.0.000</value>
-  </data>
-  <data name="dlgNewVersion_6_YesNo" xml:space="preserve">
-    <value>It is recomended that you update to the new version now.</value>
-  </data>
-  <data name="dlgNewVersion_7_YesNo_Later" xml:space="preserve">
-    <value>Later</value>
-  </data>
-  <data name="dlgNewVersion_8_YesNo_Now" xml:space="preserve">
-    <value>Update now</value>
-  </data>
-  <data name="dlgYesNo_Cancel" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="dlgYesNo_OK" xml:space="preserve">
-    <value>OK</value>
   </data>
   <data name="filename_Readme_rtf" xml:space="preserve">
     <value>NifrekaNetTraffic-ReadMe.rtf</value>
@@ -184,7 +196,7 @@
     <value>Default Layout</value>
   </data>
   <data name="main_context_GotoHomePage" xml:space="preserve">
-    <value>Goto NifrekaNetTraffic Webpage</value>
+    <value>Goto NifrekaNetTraffic Webpage...</value>
   </data>
   <data name="main_context_OpenGraph" xml:space="preserve">
     <value>Open Graph</value>
