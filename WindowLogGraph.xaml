@@ -1,0 +1,128 @@
+﻿<Window x:Class="NifrekaNetTraffic.WindowLogGraph"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NifrekaNetTraffic"
+        xmlns:p="clr-namespace:NifrekaNetTraffic.Properties"
+        mc:Ignorable="d"
+        Title="NifrekaNetTraffic - LogGraph" 
+        Width="640" Height="300" 
+        MinWidth="320" MinHeight="200" 
+        SizeChanged="Window_SizeChanged" 
+        KeyUp="Window_KeyUp" FontFamily="Consolas" 
+        >
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF404040"/>
+            <GradientStop Color="#FF808080" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+
+
+    <Grid Margin="0,0,0,0" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- ============================================= -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Label Content="{x:Static p:Resources.wind_graph_ReceivedMax}" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Padding="5,1,5,1" Foreground="White" />
+            <TextBlock x:Name="textBlock_Received_Max" HorizontalAlignment="Left" Margin="0,0,0,0" Padding="5,1,5,1" TextWrapping="NoWrap" Text="000,0" VerticalAlignment="Center" Foreground="White"/>
+            <Label Content="{x:Static p:Resources.wind_graph_bytesPerSecond}" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Normal" Padding="5,1,5,1" Foreground="White" />
+        </StackPanel>
+
+        <TextBlock Grid.Row="0" x:Name="textBlock_max_Received_Bit" HorizontalAlignment="Right" Margin="0,0,0,0" Padding="5,1,5,1" TextWrapping="NoWrap" Text="000,0  Kbit" VerticalAlignment="Center" Foreground="White"/>
+
+        <!-- ============================================= -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <local:LogGraphics Grid.Column="0" x:Name="logGraphics_Received" BorderThickness="1,1,1,1" Margin="0,0,0,0" 
+                               HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                               BorderBrush="Gray" Background="#FF202020" 
+                               MouseMove="logGraphics_Received_MouseMove" 
+                               MouseLeftButtonDown="logGraphics_Received_MouseLeftButtonDown" 
+                               MouseLeftButtonUp="logGraphics_Received_MouseLeftButtonUp" 
+                               />
+
+            <Slider x:Name="slider_ScalerReceived" Grid.Column="1" Orientation="Vertical" 
+                    Maximum="100" Value="1" Minimum="1" 
+                    ValueChanged="slider_ScalerReceived_ValueChanged" />
+
+            <TextBox x:Name="textBox_Scale_Received" HorizontalAlignment="Right" VerticalAlignment="Top" Text="x 1" Padding="5,0,5,0" Margin="2,2,2,2" IsReadOnly="True" IsUndoEnabled="False" AllowDrop="False" IsHitTestVisible="False" Focusable="False" IsTabStop="False"  />
+
+        </Grid>
+            
+        <!-- ============================================= -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0">
+            <Label Content="{x:Static p:Resources.wind_graph_SentMax}" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Padding="5,1,5,1" Foreground="White" />
+            <TextBlock  x:Name="textBlock_Sent_Max" Text="000,0" HorizontalAlignment="Left" Margin="0,0,0,0" Padding="5,1,5,1" TextWrapping="NoWrap"  VerticalAlignment="Center" Foreground="White"/>
+            <Label Content="{x:Static p:Resources.wind_graph_bytesPerSecond}" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Normal" Padding="5,1,5,1" Foreground="White" />
+        </StackPanel>
+
+        <TextBlock Grid.Row="2" x:Name="textBlock_max_Sent_Bit" HorizontalAlignment="Right" Margin="0,0,0,0" Padding="5,1,5,1" TextWrapping="NoWrap" Text="000,0  Kbit" VerticalAlignment="Center" Foreground="White"/>
+
+        <!-- ============================================= -->
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <local:LogGraphics Grid.Column="0" x:Name="logGraphics_Sent" BorderThickness="1,1,1,1" Margin="0,0,0,0" 
+                                HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                                BorderBrush="Gray" Background="#FF202020" 
+                                MouseMove="logGraphics_Sent_MouseMove"
+                               MouseLeftButtonDown="logGraphics_Sent_MouseLeftButtonDown" 
+                                />
+
+
+            <Slider x:Name="slider_ScalerSent" Grid.Column="1" Orientation="Vertical" 
+                    Maximum="100" Value="1" Minimum="1" 
+                    ValueChanged="slider_ScalerSent_ValueChanged"/>
+
+            <TextBox x:Name="textBox_Scale_Sent" HorizontalAlignment="Right" VerticalAlignment="Top" Text="x 1" Padding="5,0,5,0" Margin="2,2,2,2" IsReadOnly="True" IsUndoEnabled="False" AllowDrop="False" IsHitTestVisible="False" Focusable="False" IsTabStop="False"  />
+
+
+        </Grid>
+
+            
+        <!-- ============================================= -->
+        <StackPanel Grid.Row="4" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Label Content="{x:Static p:Resources.wind_graph_StartOffset}" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Normal" Padding="5,1,5,1" Foreground="White" />
+            <TextBlock x:Name="textBlock_DisplayStartOffset" Text="" HorizontalAlignment="Left" Margin="0,0,0,0" Padding="0,0,0,0" TextWrapping="NoWrap"  VerticalAlignment="Center" Foreground="White" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
+            <Label Content="{x:Static p:Resources.wind_graph_EndOffset}" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Normal" Padding="5,1,5,1" Foreground="White" />
+            <TextBlock x:Name="textBlock_DisplayEndOffset" Text="" HorizontalAlignment="Left" Margin="0,0,0,0" Padding="0,0,5,0" TextWrapping="NoWrap"  VerticalAlignment="Center" Foreground="White" />
+        </StackPanel>
+
+        <!-- ============================================= -->
+        <TextBlock Grid.Row="5"  x:Name="textBlock_StartOffsetDateTime" Text="" HorizontalAlignment="Left" Margin="0,0,0,0" Padding="5,0,5,0" TextWrapping="NoWrap"  VerticalAlignment="Center" Foreground="White" />
+        <TextBlock Grid.Row="5"  x:Name="textBlock_EndOffsetDateTime" Text="" HorizontalAlignment="Right" Margin="0,0,0,0" Padding="5,0,5,0" TextWrapping="NoWrap"  VerticalAlignment="Center" Foreground="White" />
+
+        <!-- ============================================= -->
+        <Border Grid.Row="6" Background="#FF404040" >
+            <Slider x:Name="slider_DisplayRange" Orientation="Horizontal" 
+                    IsMoveToPointEnabled="True"
+                    ValueChanged="slider_DisplayRange_ValueChanged"  
+                    
+                    />
+        </Border>
+
+    </Grid>
+
+
+
+</Window>
