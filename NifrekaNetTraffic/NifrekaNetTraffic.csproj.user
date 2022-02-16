@@ -23,6 +23,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="DialogVersionUpToDate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="DialogNewVersionAvailable.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="DialogYesNo.xaml">
       <SubType>Designer</SubType>
     </Page>

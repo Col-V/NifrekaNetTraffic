@@ -68,6 +68,17 @@
 	  </None>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Page Update="DialogVersionUpToDate.xaml">
+	    <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="DialogNewVersionAvailable.xaml">
+	    <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+	    <SubType>Designer</SubType>
+	  </Page>
+	</ItemGroup>
+
 
 
 

@@ -139,6 +139,9 @@ namespace NifrekaNetTraffic
                 if (count > 0)
                 {
                     listViewLog.ScrollIntoView(listViewLog.Items[count - 1]);
+
+                    // added in build 40
+                    listViewLog.SelectedIndex = count - 1;
                 }
             }          
         }
@@ -243,7 +246,7 @@ namespace NifrekaNetTraffic
         // ========================================================
         private void Dialog_ClearLog_Question()
         {
-            string question = NifrekaNetTraffic.Properties.Resources.Dialog_ClearLog_Question;
+            string question = NifrekaNetTraffic.Properties.Resources.DialogYesNo_Question_ClearLog;
 
             DialogYesNo dialogYesNo = new DialogYesNo(question);
             bool? result = dialogYesNo.ShowDialog();

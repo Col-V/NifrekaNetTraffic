@@ -45,7 +45,8 @@ namespace NifrekaNetTraffic
         // ========================================================
         {
             string versionStr = Const.NifrekaNet_Version;
-            string buildStr = Const.NifrekaNet_Build.ToString("D3");
+            // string buildStr = Const.NifrekaNet_Build.ToString("D3");
+            string buildStr = Const.NifrekaNet_Build.ToString();
             textBlockVersionBuild.Text = "Version " + versionStr + " - " + "Build "+ buildStr;
 
             UpdateDisplay();

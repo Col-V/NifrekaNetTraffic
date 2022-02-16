@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
@@ -160,15 +161,18 @@ namespace NifrekaNetTraffic
 
                 this.isTopmost = this.nifrekaNetTrafficSettings.Topmost_WindowMain;
                 this.Topmost = isTopmost;
-
-                int id = GetMenuItem_Idx("main_context_Topmost");
-                MenuItemSetCheckedFlag(id, isTopmost);
             }
             else
             {   // First Time Start
                 firstRun = true;
                 MoveWindowsToCorner(Corner.BottomRight);
+
+                this.Topmost = false;
+                this.nifrekaNetTrafficSettings.CheckForUpdateAuto = true;
             }
+
+            MenuItemSetCheckedFlag(GetMenuItem_Idx("main_context_Topmost"), isTopmost);
+            MenuItemSetCheckedFlag(GetMenuItem_Idx("CheckForUpdateAuto"), this.nifrekaNetTrafficSettings.CheckForUpdateAuto);
 
             if (this.nifrekaNetTrafficSettings.VisibleAtStart_WindowLogTable)
             {
@@ -181,10 +185,23 @@ namespace NifrekaNetTraffic
 
             dispatcherTimer.Start();
 
+            if (this.nifrekaNetTrafficSettings.CheckForUpdateAuto)
+            {
+                if (updateChecker != null)
+                {
+                    updateChecker.Dispose();
+                }
+
+                updateChecker = new UpdateChecker(this);
+                bool notifyOnlyNewVersion = true;
+                updateChecker.CheckForUpdate(notifyOnlyNewVersion);
+            }
+            
             windowLoaded = true;
 
         }
 
+        UpdateChecker updateChecker;
 
         // ========================================================
         public void MoveWindowsToCorner(Corner corner)
@@ -291,10 +308,21 @@ namespace NifrekaNetTraffic
                 windowLogGraph.Close();
             }
 
+            if (updateChecker != null)
+            {
+                updateChecker.Dispose();
+            }
+
+            
+
+
+            // ================================
             WriteSettings();
             WriteLog();
 
         }
+
+
 
         // ========================================================
         private void WriteSettings()
@@ -833,6 +861,25 @@ namespace NifrekaNetTraffic
                                 menuItem_Idx, Properties.Resources.main_context_GotoHomePage,
                                 delegate { Main_context_GotoHomePage_Click(); });
 
+            // --------------------------------
+            // Window_CheckForUpdate
+            // --------------------------------
+            menuItem_Idx = menuItem_Idx + 1;
+            ContextMenu_Add("CheckForUpdateNow",
+                                menuItem_Idx, Properties.Resources.CheckForUpdateNow,
+                                delegate { CheckForUpdateNow(); });
+
+
+            // --------------------------------
+            // Window_CheckForUpdate
+            // --------------------------------
+            menuItem_Idx = menuItem_Idx + 1;
+            ContextMenu_Add("CheckForUpdateAuto",
+                                menuItem_Idx, Properties.Resources.CheckForUpdateAuto,
+                                delegate { CheckForUpdateAuto(); });
+
+
+
             /*
             // --------------------------------
             // main_context_OpenReadme
@@ -845,10 +892,10 @@ namespace NifrekaNetTraffic
             */
 
 
-        // --------------------------------
-        // Separator
-        // --------------------------------
-        menuItem_Idx = menuItem_Idx + 1;
+            // --------------------------------
+            // Separator
+            // --------------------------------
+            menuItem_Idx = menuItem_Idx + 1;
             Contextmenu_addSeparator();
 
             // --------------------------------
@@ -1026,6 +1073,34 @@ namespace NifrekaNetTraffic
             Do_GotoHomePage();
         }
 
+        private void CheckForUpdateNow()
+        {
+            if (updateChecker != null)
+            {
+                updateChecker.Dispose();
+            }
+
+            updateChecker = new UpdateChecker(this);
+            bool notifyOnlyNewVersion = false;
+            updateChecker.CheckForUpdate(notifyOnlyNewVersion);
+        }
+
+        private void CheckForUpdateAuto()
+        {
+            Do_Toggle_CheckForUpdateAuto();
+        }
+
+        private void Do_Toggle_CheckForUpdateAuto()
+        {
+            this.nifrekaNetTrafficSettings.CheckForUpdateAuto = !this.nifrekaNetTrafficSettings.CheckForUpdateAuto;
+
+            int id = GetMenuItem_Idx("CheckForUpdateAuto");
+            MenuItemSetCheckedFlag(id, this.nifrekaNetTrafficSettings.CheckForUpdateAuto);
+        }
+
+
+
+
         /*
         private void Main_context_OpenReadMe_Click()
         {
@@ -1084,7 +1159,7 @@ namespace NifrekaNetTraffic
         }
 
         // ========================================================
-        private void Do_GotoHomePage()
+        public void Do_GotoHomePage()
         {
             try
             {
@@ -1100,6 +1175,13 @@ namespace NifrekaNetTraffic
                 // throw;
             }
         }
+
+        // ========================================================
+
+
+
+
+
 
         /*
         // ========================================================

@@ -29,14 +29,14 @@
 
 
             <TextBlock Grid.Row="0" Grid.Column="1" x:Name="textBox_Question" 
-                       Text="Do you really want to delete the Log file?" 
+                       Text="Do you really want to do this?" 
                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" Padding="0,0,0,0"
                        TextWrapping="Wrap" FontSize="18"  Width="300" />
 
 
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,30,0,0">
-                <Button x:Name="button_OK" Content="{x:Static p:Resources.dlgYesNo_OK}" Width="80"  Margin="0,0,10,0" VerticalAlignment="Center" Click="button_OK_Click"   />
-                <Button x:Name="button_Cancel" Content="{x:Static p:Resources.dlgYesNo_Cancel}" Width="80" Margin="10,0,0,0" VerticalAlignment="Center" IsCancel="True"   />
+                <Button x:Name="button_OK" Content="{x:Static p:Resources.DialogYesNo_Yes}" Width="80"  Margin="0,0,10,0" VerticalAlignment="Center" Click="button_OK_Click"   />
+                <Button x:Name="button_Cancel" Content="{x:Static p:Resources.DialogYesNo_No}" Width="80" Margin="10,0,0,0" VerticalAlignment="Center" IsCancel="True"   />
             </StackPanel>
 
 

@@ -127,6 +127,14 @@ namespace NifrekaNetTraffic
             set { visibleAtStart_WindowLogGraph = value; }
         }
 
+        // ==============================
+        private bool checkForUpdateAuto = true;
+        public bool CheckForUpdateAuto
+        {
+            get { return checkForUpdateAuto; }
+            set { checkForUpdateAuto = value; }
+        }
+
 
         // =================
         // ctor
@@ -285,6 +293,12 @@ namespace NifrekaNetTraffic
                             break;
                         }
 
+                    case "CheckForUpdateAuto":
+                        {
+                            this.CheckForUpdateAuto = br.ReadBoolean();
+                            break;
+                        }
+
                     default:
                         break;
                 }
@@ -306,7 +320,7 @@ namespace NifrekaNetTraffic
 
                 using (BinaryWriter bw = new BinaryWriter(File.Open(filepath, FileMode.Create)))
                 {
-                    int dataCount = 13;
+                    int dataCount = 14;
                     bw.Write((int)dataCount);
 
                     bw.Write("Left_WindowMain"); bw.Write(this.Left_WindowMain);
@@ -324,6 +338,9 @@ namespace NifrekaNetTraffic
                     bw.Write("Width_WindowLogGraph"); bw.Write(this.Width_WindowLogGraph);
                     bw.Write("Height_WindowLogGraph"); bw.Write(this.Height_WindowLogGraph);
                     bw.Write("VisibleAtStart_WindowLogGraph"); bw.Write(this.VisibleAtStart_WindowLogGraph);
+
+                    bw.Write("CheckForUpdateAuto"); bw.Write(this.CheckForUpdateAuto);
+
                 }
             }
             catch (Exception)
