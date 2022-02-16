@@ -246,7 +246,7 @@ namespace NifrekaNetTraffic
         // ========================================================
         private void Dialog_ClearLog_Question()
         {
-            string question = NifrekaNetTraffic.Properties.Resources.DialogYesNo_Question_ClearLog;
+            string question = NifrekaNetTraffic.Properties.Resources.Dialog_ClearLog_Question;
 
             DialogYesNo dialogYesNo = new DialogYesNo(question);
             bool? result = dialogYesNo.ShowDialog();
