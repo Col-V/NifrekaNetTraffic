@@ -111,6 +111,41 @@ namespace Nifreka
         }
 
         // ====================================
+        public static Boolean isInteger(String integerString)
+        {
+            int value;
+            try
+            {
+                if (int.TryParse(integerString, out value))
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception exc)
+            {
+                return false;
+            }
+        }
+
+        // ====================================
+        public static int StrToInt(String integerString)
+        {
+            int value = -1;
+            try
+            {
+                if (isInteger(integerString))
+                {
+                    int.TryParse(integerString, out value);
+                }
+
+            }
+            catch (Exception exc)
+            {
+            }
+
+            return value;
+        }
+        // ====================================
 
 
     }
