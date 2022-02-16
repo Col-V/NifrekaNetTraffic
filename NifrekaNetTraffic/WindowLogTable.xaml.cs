@@ -240,13 +240,13 @@ namespace NifrekaNetTraffic
         // ========================================================
         private void button_ClearLog_Click(object sender, RoutedEventArgs e)
         {
-            Dialog_ClearLog_Question();            
+            Dialog_Question_ClearLog();            
         }
 
         // ========================================================
-        private void Dialog_ClearLog_Question()
+        private void Dialog_Question_ClearLog()
         {
-            string question = NifrekaNetTraffic.Properties.Resources.Dialog_ClearLog_Question;
+            string question = NifrekaNetTraffic.Properties.Resources.Dialog_Question_ClearLog;
 
             DialogYesNo dialogYesNo = new DialogYesNo(question);
             bool? result = dialogYesNo.ShowDialog();
@@ -474,7 +474,7 @@ namespace NifrekaNetTraffic
         // ========================================================
         private void WindowLogTable_ClearLog()
         {
-            Dialog_ClearLog_Question();
+            Dialog_Question_ClearLog();
         }
 
         

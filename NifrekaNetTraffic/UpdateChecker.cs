@@ -56,7 +56,7 @@ namespace NifrekaNetTraffic
                 }
                 wc.Dispose();
             }
-
+            
             String urlStr = "https://nifreka.nl/nnt/nftVersion.txt";
             Uri uri = new Uri(urlStr);
 
