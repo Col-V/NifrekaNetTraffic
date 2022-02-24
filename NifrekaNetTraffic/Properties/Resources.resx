@@ -117,11 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CheckForUpdateAuto" xml:space="preserve">
+  <data name="ContextMenu_About" xml:space="preserve">
+    <value>About NifrekaNetTraffic...</value>
+  </data>
+  <data name="ContextMenu_CheckForUpdateAuto" xml:space="preserve">
     <value>Check for Update at startup</value>
   </data>
-  <data name="CheckForUpdateNow" xml:space="preserve">
+  <data name="ContextMenu_CheckForUpdateNow" xml:space="preserve">
     <value>Check for Update now</value>
+  </data>
+  <data name="ContextMenu_Exit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="ContextMenu_GotoHomePage" xml:space="preserve">
+    <value>Goto NifrekaNetTraffic Webpage...</value>
+  </data>
+  <data name="ContextMenu_OpenGraph" xml:space="preserve">
+    <value>Open Graph</value>
+  </data>
+  <data name="ContextMenu_OpenLogDir" xml:space="preserve">
+    <value>Open Log Directory</value>
+  </data>
+  <data name="ContextMenu_OpenTable" xml:space="preserve">
+    <value>Open Table</value>
+  </data>
+  <data name="ContextMenu_Topmost" xml:space="preserve">
+    <value>Topmost</value>
   </data>
   <data name="DialogMissingFile_button_quit" xml:space="preserve">
     <value>Quit</value>
@@ -177,6 +198,9 @@
   <data name="filename_Readme_rtf" xml:space="preserve">
     <value>NifrekaNetTraffic-ReadMe.rtf</value>
   </data>
+  <data name="LabelExit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
   <data name="label_CapsLock" xml:space="preserve">
     <value>CapsLock</value>
   </data>
@@ -186,29 +210,14 @@
   <data name="label_ScrollLock" xml:space="preserve">
     <value>ScrollLock</value>
   </data>
-  <data name="main_context_About" xml:space="preserve">
-    <value>About NifrekaNetTraffic...</value>
-  </data>
-  <data name="main_context_Close" xml:space="preserve">
-    <value>Exit</value>
+  <data name="LogList_DateTimeFormat" xml:space="preserve">
+    <value>yyyy/MM/dd - HH:mm:ss</value>
   </data>
   <data name="main_context_DefaultLayout" xml:space="preserve">
     <value>Default Layout</value>
   </data>
-  <data name="main_context_GotoHomePage" xml:space="preserve">
-    <value>Goto NifrekaNetTraffic Webpage...</value>
-  </data>
-  <data name="main_context_OpenGraph" xml:space="preserve">
-    <value>Open Graph</value>
-  </data>
   <data name="main_context_OpenReadme" xml:space="preserve">
     <value>Open Readme</value>
-  </data>
-  <data name="main_context_OpenTable" xml:space="preserve">
-    <value>Open Table</value>
-  </data>
-  <data name="main_context_Topmost" xml:space="preserve">
-    <value>Topmost</value>
   </data>
   <data name="text_off" xml:space="preserve">
     <value>OFF</value>
@@ -218,6 +227,12 @@
   </data>
   <data name="toolTip_Sent" xml:space="preserve">
     <value>Sent</value>
+  </data>
+  <data name="WindowLogGraph_ButtonEnd" xml:space="preserve">
+    <value>End</value>
+  </data>
+  <data name="WindowLogGraph_ButtonStart" xml:space="preserve">
+    <value>Start</value>
   </data>
   <data name="WindowLogGraph_context_Pause" xml:space="preserve">
     <value>Pause display</value>
@@ -267,8 +282,14 @@
   <data name="wind_graph_EndOffset" xml:space="preserve">
     <value>End:</value>
   </data>
+  <data name="wind_graph_Received" xml:space="preserve">
+    <value>Received</value>
+  </data>
   <data name="wind_graph_ReceivedMax" xml:space="preserve">
     <value>Received Max:</value>
+  </data>
+  <data name="wind_graph_Sent" xml:space="preserve">
+    <value>Sent</value>
   </data>
   <data name="wind_graph_SentMax" xml:space="preserve">
     <value>Sent Max:</value>

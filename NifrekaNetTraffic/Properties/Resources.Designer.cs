@@ -61,20 +61,83 @@ namespace NifrekaNetTraffic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About NifrekaNetTraffic....
+        /// </summary>
+        public static string ContextMenu_About {
+            get {
+                return ResourceManager.GetString("ContextMenu_About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Check for Update at startup.
         /// </summary>
-        public static string CheckForUpdateAuto {
+        public static string ContextMenu_CheckForUpdateAuto {
             get {
-                return ResourceManager.GetString("CheckForUpdateAuto", resourceCulture);
+                return ResourceManager.GetString("ContextMenu_CheckForUpdateAuto", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Check for Update now.
         /// </summary>
-        public static string CheckForUpdateNow {
+        public static string ContextMenu_CheckForUpdateNow {
             get {
-                return ResourceManager.GetString("CheckForUpdateNow", resourceCulture);
+                return ResourceManager.GetString("ContextMenu_CheckForUpdateNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit.
+        /// </summary>
+        public static string ContextMenu_Exit {
+            get {
+                return ResourceManager.GetString("ContextMenu_Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goto NifrekaNetTraffic Webpage....
+        /// </summary>
+        public static string ContextMenu_GotoHomePage {
+            get {
+                return ResourceManager.GetString("ContextMenu_GotoHomePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Graph.
+        /// </summary>
+        public static string ContextMenu_OpenGraph {
+            get {
+                return ResourceManager.GetString("ContextMenu_OpenGraph", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Log Directory.
+        /// </summary>
+        public static string ContextMenu_OpenLogDir {
+            get {
+                return ResourceManager.GetString("ContextMenu_OpenLogDir", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Table.
+        /// </summary>
+        public static string ContextMenu_OpenTable {
+            get {
+                return ResourceManager.GetString("ContextMenu_OpenTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Topmost.
+        /// </summary>
+        public static string ContextMenu_Topmost {
+            get {
+                return ResourceManager.GetString("ContextMenu_Topmost", resourceCulture);
             }
         }
         
@@ -268,20 +331,20 @@ namespace NifrekaNetTraffic.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About NifrekaNetTraffic....
+        ///   Looks up a localized string similar to Exit.
         /// </summary>
-        public static string main_context_About {
+        public static string LabelExit {
             get {
-                return ResourceManager.GetString("main_context_About", resourceCulture);
+                return ResourceManager.GetString("LabelExit", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Exit.
+        ///   Looks up a localized string similar to yyyy/MM/dd - HH:mm:ss.
         /// </summary>
-        public static string main_context_Close {
+        public static string LogList_DateTimeFormat {
             get {
-                return ResourceManager.GetString("main_context_Close", resourceCulture);
+                return ResourceManager.GetString("LogList_DateTimeFormat", resourceCulture);
             }
         }
         
@@ -295,47 +358,11 @@ namespace NifrekaNetTraffic.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Goto NifrekaNetTraffic Webpage....
-        /// </summary>
-        public static string main_context_GotoHomePage {
-            get {
-                return ResourceManager.GetString("main_context_GotoHomePage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Open Graph.
-        /// </summary>
-        public static string main_context_OpenGraph {
-            get {
-                return ResourceManager.GetString("main_context_OpenGraph", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Open Readme.
         /// </summary>
         public static string main_context_OpenReadme {
             get {
                 return ResourceManager.GetString("main_context_OpenReadme", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Open Table.
-        /// </summary>
-        public static string main_context_OpenTable {
-            get {
-                return ResourceManager.GetString("main_context_OpenTable", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Topmost.
-        /// </summary>
-        public static string main_context_Topmost {
-            get {
-                return ResourceManager.GetString("main_context_Topmost", resourceCulture);
             }
         }
         
@@ -385,11 +412,29 @@ namespace NifrekaNetTraffic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Received.
+        /// </summary>
+        public static string wind_graph_Received {
+            get {
+                return ResourceManager.GetString("wind_graph_Received", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Received Max:.
         /// </summary>
         public static string wind_graph_ReceivedMax {
             get {
                 return ResourceManager.GetString("wind_graph_ReceivedMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sent.
+        /// </summary>
+        public static string wind_graph_Sent {
+            get {
+                return ResourceManager.GetString("wind_graph_Sent", resourceCulture);
             }
         }
         
@@ -525,6 +570,24 @@ namespace NifrekaNetTraffic.Properties {
         public static string WindowLog_context_SyncLogs {
             get {
                 return ResourceManager.GetString("WindowLog_context_SyncLogs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End.
+        /// </summary>
+        public static string WindowLogGraph_ButtonEnd {
+            get {
+                return ResourceManager.GetString("WindowLogGraph_ButtonEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start.
+        /// </summary>
+        public static string WindowLogGraph_ButtonStart {
+            get {
+                return ResourceManager.GetString("WindowLogGraph_ButtonStart", resourceCulture);
             }
         }
         

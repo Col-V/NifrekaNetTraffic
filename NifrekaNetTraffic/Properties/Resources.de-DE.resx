@@ -117,11 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CheckForUpdateAuto" xml:space="preserve">
+  <data name="ContextMenu_About" xml:space="preserve">
+    <value>Über NifrekaNetTraffic...</value>
+  </data>
+  <data name="ContextMenu_CheckForUpdateAuto" xml:space="preserve">
     <value>Beim Programmstart auf Update prüfen</value>
   </data>
-  <data name="CheckForUpdateNow" xml:space="preserve">
+  <data name="ContextMenu_CheckForUpdateNow" xml:space="preserve">
     <value>Jetzt auf Update prüfen</value>
+  </data>
+  <data name="ContextMenu_Exit" xml:space="preserve">
+    <value>Beenden</value>
+  </data>
+  <data name="ContextMenu_GotoHomePage" xml:space="preserve">
+    <value>NifrekaNetTraffic Webseite öffnen...</value>
+  </data>
+  <data name="ContextMenu_OpenGraph" xml:space="preserve">
+    <value>Grafik öffnen</value>
+  </data>
+  <data name="ContextMenu_OpenLogDir" xml:space="preserve">
+    <value>Log Ordner öffnen</value>
+  </data>
+  <data name="ContextMenu_OpenTable" xml:space="preserve">
+    <value>Tabelle öffnen</value>
+  </data>
+  <data name="ContextMenu_Topmost" xml:space="preserve">
+    <value>Immer im Vordergrund</value>
   </data>
   <data name="DialogMissingFile_button_quit" xml:space="preserve">
     <value>Beenden</value>
@@ -177,6 +198,9 @@
   <data name="filename_Readme_rtf" xml:space="preserve">
     <value>NifrekaNetTraffic-LiesMich.rtf</value>
   </data>
+  <data name="LabelExit" xml:space="preserve">
+    <value>Beenden</value>
+  </data>
   <data name="label_CapsLock" xml:space="preserve">
     <value>Feststelltaste</value>
   </data>
@@ -186,29 +210,14 @@
   <data name="label_ScrollLock" xml:space="preserve">
     <value>Rollen</value>
   </data>
-  <data name="main_context_About" xml:space="preserve">
-    <value>Über NifrekaNetTraffic...</value>
-  </data>
-  <data name="main_context_Close" xml:space="preserve">
-    <value>Beenden</value>
+  <data name="LogList_DateTimeFormat" xml:space="preserve">
+    <value>dd.MM.yyyy - HH:mm:ss</value>
   </data>
   <data name="main_context_DefaultLayout" xml:space="preserve">
     <value>Standard Fensteranordnung</value>
   </data>
-  <data name="main_context_GotoHomePage" xml:space="preserve">
-    <value>NifrekaNetTraffic Webseite öffnen...</value>
-  </data>
-  <data name="main_context_OpenGraph" xml:space="preserve">
-    <value>Grafik öffnen</value>
-  </data>
   <data name="main_context_OpenReadme" xml:space="preserve">
     <value>LiesMich öffnen</value>
-  </data>
-  <data name="main_context_OpenTable" xml:space="preserve">
-    <value>Tabelle öffnen</value>
-  </data>
-  <data name="main_context_Topmost" xml:space="preserve">
-    <value>Immer im Vordergrund</value>
   </data>
   <data name="text_off" xml:space="preserve">
     <value>OFF</value>
@@ -218,6 +227,12 @@
   </data>
   <data name="toolTip_Sent" xml:space="preserve">
     <value>Gesendet</value>
+  </data>
+  <data name="WindowLogGraph_ButtonEnd" xml:space="preserve">
+    <value>Ende</value>
+  </data>
+  <data name="WindowLogGraph_ButtonStart" xml:space="preserve">
+    <value>Start</value>
   </data>
   <data name="WindowLogGraph_context_Pause" xml:space="preserve">
     <value>Anzeige pausieren</value>
@@ -262,13 +277,19 @@
     <value>Oben rechts</value>
   </data>
   <data name="wind_graph_bytesPerSecond" xml:space="preserve">
-    <value>B/Sek</value>
+    <value>B/s</value>
   </data>
   <data name="wind_graph_EndOffset" xml:space="preserve">
     <value>Ende:</value>
   </data>
+  <data name="wind_graph_Received" xml:space="preserve">
+    <value>Empfangen</value>
+  </data>
   <data name="wind_graph_ReceivedMax" xml:space="preserve">
     <value>Empfangen Max:</value>
+  </data>
+  <data name="wind_graph_Sent" xml:space="preserve">
+    <value>Gesendet</value>
   </data>
   <data name="wind_graph_SentMax" xml:space="preserve">
     <value>Gesendet Max:</value>
