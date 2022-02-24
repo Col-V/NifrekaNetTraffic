@@ -1,5 +1,5 @@
 ﻿// ==============================
-// Copyright 2021 vennway.com
+// Copyright 2022 nifreka.nl
 // ==============================
 
 using System;
