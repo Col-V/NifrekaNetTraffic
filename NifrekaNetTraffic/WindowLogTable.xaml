@@ -12,7 +12,11 @@
         Width="410" 
         
         MinWidth="200"
-        MaxWidth="800" Background="#FF606060"
+        MinHeight="250"
+        
+        MaxWidth="800" 
+        
+        Background="#FF606060" PreviewKeyUp="Window_PreviewKeyUp" 
         >
 
     <Grid>
@@ -131,6 +135,8 @@
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
 
                                     <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,0" HorizontalAlignment="Right">
@@ -138,20 +144,10 @@
                                         <TextBlock x:Name="textBlock_Count" VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="000.000" Padding="5,2,5,2" Foreground="White" />
                                     </StackPanel>
 
-                                    <TextBox Grid.Row="1" Grid.Column="0" Text="{x:Static p:Resources.WindowLogTable_Total}" 
-                                                 VerticalAlignment="Center" HorizontalAlignment="Right" HorizontalContentAlignment="Right"  
-                                                 Padding="0,0,0,0" Margin="0,5,0,0"                                                
-                                                 IsReadOnly="True" 
-                                                 IsEnabled="True"
-                                                 IsUndoEnabled="False"
-                                                 AllowDrop="False" 
-                                                 Focusable="False" 
-                                                 IsHitTestVisible="False" 
-                                                 IsTabStop="False" 
-                                                 Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" 
-                                                 />
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text=" " FontWeight="Bold" HorizontalAlignment="Right" Margin="0,5,2,0"  />
 
-                                    <TextBox Grid.Row="2" Grid.Column="0" Text="{x:Static p:Resources.WindowLogTable_Log}" 
+
+                                    <TextBox Grid.Row="2" Grid.Column="0" Text="{x:Static p:Resources.WindowLogTable_Total}" 
                                                  VerticalAlignment="Center" HorizontalAlignment="Right" HorizontalContentAlignment="Right"  
                                                  Padding="0,0,0,0" Margin="0,0,0,0"                                                
                                                  IsReadOnly="True" 
@@ -164,7 +160,7 @@
                                                  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" 
                                                  />
 
-                                    <TextBox Grid.Row="3" Grid.Column="0" Text="{x:Static p:Resources.WindowLogTable_Selection}"  
+                                    <TextBox Grid.Row="3" Grid.Column="0" Text="{x:Static p:Resources.WindowLogTable_Log}" 
                                                  VerticalAlignment="Center" HorizontalAlignment="Right" HorizontalContentAlignment="Right"  
                                                  Padding="0,0,0,0" Margin="0,0,0,0"                                                
                                                  IsReadOnly="True" 
@@ -176,8 +172,22 @@
                                                  IsTabStop="False" 
                                                  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" 
                                                  />
-                                                                                                    
-                                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static p:Resources.wind_table_DateTime}" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10,0,0"  />
+
+                                    <TextBox Grid.Row="4" Grid.Column="0" Text="{x:Static p:Resources.WindowLogTable_Selection}"  
+                                                 VerticalAlignment="Center" HorizontalAlignment="Right" HorizontalContentAlignment="Right"  
+                                                 Padding="0,0,0,0" Margin="0,0,0,0"                                                
+                                                 IsReadOnly="True" 
+                                                 IsEnabled="True"
+                                                 IsUndoEnabled="False"
+                                                 AllowDrop="False" 
+                                                 Focusable="False" 
+                                                 IsHitTestVisible="False" 
+                                                 IsTabStop="False" 
+                                                 Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" 
+                                                 />
+
+                                    <TextBlock Grid.Row="5" Grid.Column="0" Text=" " FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10,0,0"  />
+                                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static p:Resources.wind_table_DateTime}" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,0"  />
                                 </Grid>
 
                             </GridViewColumnHeader.Content>
@@ -254,7 +264,9 @@
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
 
 
                                         <TextBox Grid.Row="0" Grid.Column="1" Text="{x:Static p:Resources.wind_table_ReceivedBytes}" 
@@ -270,22 +282,9 @@
                                                  IsHitTestVisible="False" 
                                                  IsTabStop="False"    />
 
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="G   M   K   B" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,5,3,0"  />
 
-                                        <TextBox Grid.Row="1" Grid.Column="0" x:Name="textBlock_BytesReceivedTotal"  
-                                                 Text="000.000.000.000" 
-                                                 VerticalAlignment="Center" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right"  
-                                                 Padding="0,0,0,0" Margin="0,5,0,0"                                                
-                                                 IsReadOnly="True" 
-                                                 IsEnabled="True"
-                                                 IsUndoEnabled="False"
-                                                 AllowDrop="False" 
-                                                 Focusable="False" 
-                                                 IsHitTestVisible="False" 
-                                                 IsTabStop="False" 
-                                                 />
-
-
-                                        <TextBox Grid.Row="2" Grid.Column="0" x:Name="textBlock_BytesReceivedLog"  
+                                    <TextBox Grid.Row="2" Grid.Column="0" x:Name="textBlock_BytesReceivedTotal"  
                                                  Text="000.000.000.000" 
                                                  VerticalAlignment="Center" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right"  
                                                  Padding="0,0,0,0" Margin="0,0,0,0"                                                
@@ -299,7 +298,7 @@
                                                  />
 
 
-                                        <TextBox Grid.Row="3" Grid.Column="0" x:Name="textBlock_BytesReceivedSelection" 
+                                        <TextBox Grid.Row="3" Grid.Column="0" x:Name="textBlock_BytesReceivedLog"  
                                                  Text="000.000.000.000" 
                                                  VerticalAlignment="Center" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right"  
                                                  Padding="0,0,0,0" Margin="0,0,0,0"                                                
@@ -311,10 +310,25 @@
                                                  IsHitTestVisible="False" 
                                                  IsTabStop="False" 
                                                  />
-                                        
-                                        
-                                        <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static p:Resources.wind_table_Interval}" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,10,0,0"  />
-                                    </Grid>
+
+
+                                        <TextBox Grid.Row="4" Grid.Column="0" x:Name="textBlock_BytesReceivedSelection" 
+                                                 Text="000.000.000.000" 
+                                                 VerticalAlignment="Center" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right"  
+                                                 Padding="0,0,0,0" Margin="0,0,0,0"                                                
+                                                 IsReadOnly="True" 
+                                                 IsEnabled="True"
+                                                 IsUndoEnabled="False"
+                                                 AllowDrop="False" 
+                                                 Focusable="False" 
+                                                 IsHitTestVisible="False" 
+                                                 IsTabStop="False" 
+                                                 />
+
+
+                                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static p:Resources.wind_table_Interval}" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,10,2,0"  />
+                                    <TextBlock Grid.Row="6" Grid.Column="0" Text="G   M   K   B" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,0,2,0"  />
+                                </Grid>
 
                             </GridViewColumnHeader.Content>
                         </GridViewColumnHeader>
@@ -348,6 +362,8 @@
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
 
                                         <TextBox Grid.Row="0" Grid.Column="0"  Text="{x:Static p:Resources.wind_table_SentBytes}"                                                 
@@ -363,10 +379,12 @@
                                                  IsHitTestVisible="False" 
                                                  IsTabStop="False"  />
 
-                                        <TextBox Grid.Row="1" Grid.Column="0" x:Name="textBlock_BytesSentTotal" 
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="G   M   K   B" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,5,3,0"  />
+
+                                    <TextBox Grid.Row="2" Grid.Column="0" x:Name="textBlock_BytesSentTotal" 
                                                  Text="000.000.000.000" 
                                                  VerticalAlignment="Center" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right"  
-                                                 Padding="0,0,0,0" Margin="0,5,0,0"                                                
+                                                 Padding="0,0,0,0" Margin="0,0,0,0"                                                
                                                  IsReadOnly="True" 
                                                  IsEnabled="True"
                                                  IsUndoEnabled="False"
@@ -376,7 +394,7 @@
                                                  IsTabStop="False" 
                                                  />
 
-                                        <TextBox Grid.Row="2" Grid.Column="0" x:Name="textBlock_BytesSentLog" 
+                                        <TextBox Grid.Row="3" Grid.Column="0" x:Name="textBlock_BytesSentLog" 
                                                  Text="000.000.000.000" 
                                                  VerticalAlignment="Center" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right"  
                                                  Padding="0,0,0,0" Margin="0,0,0,0"                                                
@@ -390,7 +408,7 @@
                                                  />
 
 
-                                        <TextBox Grid.Row="3" Grid.Column="0" x:Name="textBlock_BytesSentSelection" 
+                                        <TextBox Grid.Row="4" Grid.Column="0" x:Name="textBlock_BytesSentSelection" 
                                                  Text="000.000.000.000" 
                                                  VerticalAlignment="Center" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right"  
                                                  Padding="0,0,0,0" Margin="0,0,0,0"                                                
@@ -403,8 +421,9 @@
                                                  IsTabStop="False" 
                                                  />
 
-                                        <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static p:Resources.wind_table_Interval}" FontWeight="Bold" HorizontalAlignment="Right" Padding="0,10,0,0"  />
-                                    </Grid>
+                                        <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static p:Resources.wind_table_Interval}" FontWeight="Bold" HorizontalAlignment="Right" Padding="0,10,2,0"  />
+                                        <TextBlock Grid.Row="6" Grid.Column="0" Text="G   M   K   B" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,0,2,0"  />
+                                </Grid>
 
                             </GridViewColumnHeader.Content>
                         </GridViewColumnHeader>
@@ -420,23 +439,50 @@
 
                     <!-- ============================================= -->
 
-
-
                     <!-- ============================================= -->
 
 
 
 
-                    <!-- =============================================
-                            <GridViewColumn x:Name="gridViewColumn_ServiceKey" DisplayMemberBinding="{Binding Path=ServiceKey}"  >
-                                <GridViewColumnHeader x:Name="gvch_ServiceKey" Content="ServiceKey"
-											            Padding="6,0,25,0"
-                                                        HorizontalContentAlignment="Left"  
+                    <!-- ============================================= -->
+                    <GridViewColumn x:Name="gridViewColumn_BytesReceived"  >
+                        <GridViewColumnHeader x:Name="gvch_BytesReceived" Content="BytesReceived"
+											            Padding="6,0,6,0"
+                                                        HorizontalContentAlignment="Right"  
+                                                        VerticalContentAlignment="Bottom"
                                                         Template="{DynamicResource GridViewColumnHeaderControlTemplate1}" 
                                                         BorderThickness="0,1,1,1"
                                                       />
-                            </GridViewColumn>
-                             -->
+
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=BytesReceived_1000}" FontWeight="Normal" HorizontalAlignment="Right"  />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                        
+                    </GridViewColumn>
+
+                    
+                    
+                    
+                    <GridViewColumn x:Name="gridViewColumn_BytesSent"  >
+                        <GridViewColumnHeader x:Name="gvch_BytesSent" Content="BytesSent"
+											            Padding="6,0,6,0"
+                                                        HorizontalContentAlignment="Right"
+                                                        VerticalContentAlignment="Bottom"
+                                                        Template="{DynamicResource GridViewColumnHeaderControlTemplate1}" 
+                                                        BorderThickness="0,1,1,1"
+                                                      />
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=BytesSent_1000}" FontWeight="Normal" HorizontalAlignment="Right"  />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                        
+                    </GridViewColumn>
+                    
+                    
+
 
                     <!-- =============================================
                             <GridViewColumn x:Name="gridViewStartTime_seconds" DisplayMemberBinding="{Binding Path=StartTime_seconds}"  >

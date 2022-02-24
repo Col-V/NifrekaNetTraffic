@@ -1,4 +1,8 @@
-﻿using System;
+﻿// ==============================
+// Copyright 2022 nifreka.nl
+// ==============================
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,7 +15,7 @@ namespace NifrekaNetTraffic
     public class NifrekaNetTrafficSettings
     {
         public double WindowLogTable_DefaultHeight = 325;
-        public double WindowLogGraph_DefaultHeight = 300;
+        public double WindowLogGraph_DefaultHeight = 310;
 
 
         // ========================
@@ -151,25 +155,6 @@ namespace NifrekaNetTraffic
         {
             height_WindowLogTable = WindowLogTable_DefaultHeight;
             height_WindowLogGraph = WindowLogGraph_DefaultHeight;
-        }
-
-        // =====================================
-        public void CleanUp_OldDataFile()
-        {
-            string oldFilepath = Const.NifrekaNetTraffic_Settings_PATH_Old_v1;
-
-            try
-            {
-                if (File.Exists(oldFilepath) == true)
-                {
-                    File.Delete(oldFilepath);
-                }
-            }
-            catch (Exception)
-            {
-                // throw;
-            }
-
         }
 
         // =====================================

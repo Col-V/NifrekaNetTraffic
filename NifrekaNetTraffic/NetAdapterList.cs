@@ -1,4 +1,8 @@
-﻿using System;
+﻿// ==============================
+// Copyright 2022 nifreka.nl
+// ==============================
+
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;

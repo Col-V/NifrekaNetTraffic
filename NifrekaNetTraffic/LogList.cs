@@ -1,4 +1,8 @@
-﻿using System;
+﻿// ==============================
+// Copyright 2022 nifreka.nl
+// ==============================
+
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -9,13 +13,14 @@ using System.Windows;
 
 namespace NifrekaNetTraffic
 {
-    public enum LogDataType { None = 0, Received = 1, Sent = 2 };
+    public enum DataUnit { Byte = 1, Bit = 8 };
+    public enum DataDirection { Received = 1, Sent = 2 };
 
     // ###############################################################
     public class LogList : ObservableCollection<LogListItem>
     {
-        private int maxItemCount = 86400;   // seconds
-        private int maxBuffer = 3600;   // seconds
+        private int maxItemCount = 86400;   // seconds = 1 day
+        private int maxBuffer = 3600;   // seconds = 1 hour
 
         private string filepath = Const.NifrekaNetTraffic_Log_PATH;
         private string fileVersion = "version_001";
@@ -100,6 +105,32 @@ namespace NifrekaNetTraffic
 
         }
 
+        // ========================================================
+        public static long CalcBytesPerSecond(LogListItem logListItem, LogListItem logListItem_previous, DataDirection dataDirection)
+        {
+            long bytesPerSecond = 0;
+            long interval = 0;
+
+            long diff_Ticks = logListItem.DataTimeTicks - logListItem_previous.DataTimeTicks;
+
+            if (dataDirection == DataDirection.Received)
+            {
+                interval = logListItem.BytesReceivedInterval;
+            }
+            if (dataDirection == DataDirection.Sent)
+            {
+                interval = logListItem.BytesSentInterval;
+            }
+
+            if (diff_Ticks > 0)
+            {
+                double bytesPerSecond_double = (double)interval / diff_Ticks * 1000 * 1000 * 10;
+                bytesPerSecond = (long)bytesPerSecond_double;
+            }
+
+            return bytesPerSecond;
+        }
+
 
 
         // =========================================
@@ -158,12 +189,16 @@ namespace NifrekaNetTraffic
                             for (int i = 0; i < dataCount; i++)
                             {
                                 long dataTimeTicks = br.ReadInt64();
+                                long bytesReceived = br.ReadInt64();
+                                long bytesSent = br.ReadInt64();
                                 long bytesReceivedInterval = br.ReadInt64();
                                 long bytesSentInterval = br.ReadInt64();
 
                                 LogListItem logListItem = new LogListItem(dataTimeTicks,
-                                                                                        bytesReceivedInterval,
-                                                                                        bytesSentInterval);
+                                                                            bytesReceived,
+                                                                            bytesSent,
+                                                                            bytesReceivedInterval,
+                                                                            bytesSentInterval);
 
                                 this.Add(logListItem);
                             }
@@ -200,6 +235,8 @@ namespace NifrekaNetTraffic
                         LogListItem logListItem = this.ElementAt(i);
 
                         bw.Write(logListItem.DataTimeTicks);
+                        bw.Write(logListItem.BytesReceived);
+                        bw.Write(logListItem.BytesSent);
                         bw.Write(logListItem.BytesReceivedInterval);
                         bw.Write(logListItem.BytesSentInterval);
                     }
@@ -231,6 +268,10 @@ namespace NifrekaNetTraffic
                         LogListItem logListItem = this.ElementAt(i);
 
                         sw.Write(logListItem.DataTime_Str); sw.Write("\t");
+
+                        sw.Write(logListItem.BytesReceived.ToString()); sw.Write("\t");
+                        sw.Write(logListItem.BytesSent.ToString()); sw.Write("\t");
+
                         sw.Write(logListItem.BytesReceivedInterval.ToString()); sw.Write("\t");
                         sw.Write(logListItem.BytesSentInterval.ToString()); sw.Write(Environment.NewLine);
                     }
@@ -311,11 +352,37 @@ namespace NifrekaNetTraffic
             get {
 
                 DateTime dt = new DateTime(dataTimeTicks);
-                // string dt_str = dt.ToString("dd.MM.yyyy - HH:mm:ss");
-                string dt_str = dt.ToString("dd.MM.yyyy - HH:mm:ss");
+                string dt_str = dt.ToString(Properties.Resources.LogList_DateTimeFormat);
+
                 return dt_str;
             }
             set {  }
+        }
+
+        // ===============
+        private long bytesReceived;
+        public long BytesReceived
+        {
+            get { return bytesReceived; }
+            set { bytesReceived = value; }
+        }
+
+        public string BytesReceived_1000
+        {
+            get { return bytesReceived.ToString("#,##0"); }
+        }
+
+        // ===============
+        private long bytesSent;
+        public long BytesSent
+        {
+            get { return bytesSent; }
+            set { bytesSent = value; }
+        }
+
+        public string BytesSent_1000
+        {
+            get { return bytesSent.ToString("#,##0"); }
         }
 
         // ===============
@@ -329,7 +396,6 @@ namespace NifrekaNetTraffic
         public string BytesReceivedInterval_1000
         {
             get { return bytesReceivedInterval.ToString("#,##0"); }
-            set { }
         }
 
         // ===============
@@ -349,9 +415,16 @@ namespace NifrekaNetTraffic
         // ===========================
         // ctor
         // ===========================
-        public LogListItem(long dataTimeTicks, long bytesReceivedInterval, long bytesSentInterval)
+        public LogListItem(long dataTimeTicks, long bytesReceived,
+                                               long bytesSent,
+                                               long bytesReceivedInterval,
+                                               long bytesSentInterval)
         {
-            this.dataTimeTicks = dataTimeTicks; 
+            this.dataTimeTicks = dataTimeTicks;
+
+            this.bytesReceived = bytesReceived;
+            this.bytesSent = bytesSent;
+
             this.bytesReceivedInterval = bytesReceivedInterval;
             this.bytesSentInterval = bytesSentInterval;
         }
