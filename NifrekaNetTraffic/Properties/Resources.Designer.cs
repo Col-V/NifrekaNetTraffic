@@ -556,6 +556,42 @@ namespace NifrekaNetTraffic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NifrekaNetTraffic : Graph.
+        /// </summary>
+        public static string Window_Title_Graph {
+            get {
+                return ResourceManager.GetString("Window_Title_Graph", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NifrekaNetTraffic : Graph + Compact.
+        /// </summary>
+        public static string Window_Title_GraphAndSmall {
+            get {
+                return ResourceManager.GetString("Window_Title_GraphAndSmall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NifrekaNetTraffic : LogTable.
+        /// </summary>
+        public static string Window_Title_LogTable {
+            get {
+                return ResourceManager.GetString("Window_Title_LogTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NifrekaNetTraffic : Compact.
+        /// </summary>
+        public static string Window_Title_Small {
+            get {
+                return ResourceManager.GetString("Window_Title_Small", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Default Layout.
         /// </summary>
         public static string WindowLog_context_DefaultLayout {
@@ -597,6 +633,33 @@ namespace NifrekaNetTraffic.Properties {
         public static string WindowLogGraph_context_Pause {
             get {
                 return ResourceManager.GetString("WindowLogGraph_context_Pause", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Graph + Compact.
+        /// </summary>
+        public static string WindowLogGraph_View_Both {
+            get {
+                return ResourceManager.GetString("WindowLogGraph_View_Both", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Graph.
+        /// </summary>
+        public static string WindowLogGraph_View_Graph {
+            get {
+                return ResourceManager.GetString("WindowLogGraph_View_Graph", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compact.
+        /// </summary>
+        public static string WindowLogGraph_View_Small {
+            get {
+                return ResourceManager.GetString("WindowLogGraph_View_Small", resourceCulture);
             }
         }
         

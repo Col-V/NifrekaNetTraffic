@@ -121,10 +121,10 @@
     <value>Über NifrekaNetTraffic...</value>
   </data>
   <data name="ContextMenu_CheckForUpdateAuto" xml:space="preserve">
-    <value>Beim Programmstart auf Update prüfen</value>
+    <value>Auf Update prüfen - bei Programmstart</value>
   </data>
   <data name="ContextMenu_CheckForUpdateNow" xml:space="preserve">
-    <value>Jetzt auf Update prüfen</value>
+    <value>Auf Update prüfen - jetzt</value>
   </data>
   <data name="ContextMenu_Exit" xml:space="preserve">
     <value>Beenden</value>
@@ -237,6 +237,15 @@
   <data name="WindowLogGraph_context_Pause" xml:space="preserve">
     <value>Anzeige pausieren</value>
   </data>
+  <data name="WindowLogGraph_View_Both" xml:space="preserve">
+    <value>Grafik + Kompakt</value>
+  </data>
+  <data name="WindowLogGraph_View_Graph" xml:space="preserve">
+    <value>Grafik</value>
+  </data>
+  <data name="WindowLogGraph_View_Small" xml:space="preserve">
+    <value>Kompakt</value>
+  </data>
   <data name="WindowLogTable_ClearLog" xml:space="preserve">
     <value>Log löschen</value>
   </data>
@@ -275,6 +284,18 @@
   </data>
   <data name="Window_Position_TopRight" xml:space="preserve">
     <value>Oben rechts</value>
+  </data>
+  <data name="Window_Title_Graph" xml:space="preserve">
+    <value>NifrekaNetTraffic : Grafik</value>
+  </data>
+  <data name="Window_Title_GraphAndSmall" xml:space="preserve">
+    <value>NifrekaNetTraffic : Grafik + Kompakt</value>
+  </data>
+  <data name="Window_Title_LogTable" xml:space="preserve">
+    <value>NifrekaNetTraffic : Log-Tabelle</value>
+  </data>
+  <data name="Window_Title_Small" xml:space="preserve">
+    <value>NifrekaNetTraffic : Kompakt</value>
   </data>
   <data name="wind_graph_bytesPerSecond" xml:space="preserve">
     <value>B/s</value>

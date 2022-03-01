@@ -237,6 +237,15 @@
   <data name="WindowLogGraph_context_Pause" xml:space="preserve">
     <value>Pause display</value>
   </data>
+  <data name="WindowLogGraph_View_Both" xml:space="preserve">
+    <value>Graph + Compact</value>
+  </data>
+  <data name="WindowLogGraph_View_Graph" xml:space="preserve">
+    <value>Graph</value>
+  </data>
+  <data name="WindowLogGraph_View_Small" xml:space="preserve">
+    <value>Compact</value>
+  </data>
   <data name="WindowLogTable_ClearLog" xml:space="preserve">
     <value>Clear Log</value>
   </data>
@@ -275,6 +284,18 @@
   </data>
   <data name="Window_Position_TopRight" xml:space="preserve">
     <value>Top right</value>
+  </data>
+  <data name="Window_Title_Graph" xml:space="preserve">
+    <value>NifrekaNetTraffic : Graph</value>
+  </data>
+  <data name="Window_Title_GraphAndSmall" xml:space="preserve">
+    <value>NifrekaNetTraffic : Graph + Compact</value>
+  </data>
+  <data name="Window_Title_LogTable" xml:space="preserve">
+    <value>NifrekaNetTraffic : LogTable</value>
+  </data>
+  <data name="Window_Title_Small" xml:space="preserve">
+    <value>NifrekaNetTraffic : Compact</value>
   </data>
   <data name="wind_graph_bytesPerSecond" xml:space="preserve">
     <value>B/s</value>
