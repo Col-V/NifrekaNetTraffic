@@ -13,11 +13,12 @@ using System.Windows;
 using System.IO;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using System.Windows.Media;
 
 namespace Nifreka
 {
     // ###############################################################
-    public class NifrekaConversionUtil
+    public static class NifrekaConversionUtil
     {
         // ====================================
         public static double Sinus(double zahl)
@@ -220,7 +221,7 @@ namespace Nifreka
                 else
                     return false;
             }
-            catch (Exception exc)
+            catch (Exception )
             {
                 return false;
             }
@@ -238,12 +239,16 @@ namespace Nifreka
                 }
 
             }
-            catch (Exception exc)
+            catch (Exception )
             {
             }
 
             return value;
         }
+
+        
+
+
         // ====================================
 
 
