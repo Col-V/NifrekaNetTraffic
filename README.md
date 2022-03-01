@@ -1,7 +1,7 @@
 # NifrekaNetTraffic
-Version 1.2\
-Build 43\
-2022-02-24
+Version 1.3\
+Build 44\
+2022-03-01
 
 
 NifrekaNetTraffic is a simple WPF desktop program for Windows 10 and Windows 11 and displays information about the current network interface traffic in compact, graphical and tablular representation.
