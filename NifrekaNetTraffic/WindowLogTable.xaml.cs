@@ -2,6 +2,7 @@
 // Copyright 2022 nifreka.nl
 // ==============================
 
+using Nifreka;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -50,6 +52,8 @@ namespace NifrekaNetTraffic
             CreateContextmenu();
 
             InitializeComponent();
+
+            this.Title = Properties.Resources.Window_Title_LogTable;
 
             SetVisibile_Received_Sent_Columns(false);
 
@@ -294,7 +298,7 @@ namespace NifrekaNetTraffic
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //  MessageBox.Show(ex.Message);
             }
@@ -324,6 +328,9 @@ namespace NifrekaNetTraffic
             }
             
         }
+
+
+
 
         // ========================================================
         // CreateContextmenu
@@ -422,6 +429,7 @@ namespace NifrekaNetTraffic
 
 
 
+      
             // --------------------------------
             // Separator
             // --------------------------------
@@ -435,7 +443,7 @@ namespace NifrekaNetTraffic
             menuItem_Idx = menuItem_Idx + 1;
             ContextMenu_Add_WithIcon("Window_Position_TopLeft",
                                     menuItem_Idx, Properties.Resources.Window_Position_TopLeft,
-                                    "PositionTopLeft.png", delegate { app.Window_Position_TopLeft(this); });
+                                    "PositionTopLeft.png", delegate { app.Window_Position_TopLeft(); });
 
 
             // --------------------------------
@@ -444,7 +452,7 @@ namespace NifrekaNetTraffic
             menuItem_Idx = menuItem_Idx + 1;
             ContextMenu_Add_WithIcon("Window_Position_TopRight",
                                     menuItem_Idx, Properties.Resources.Window_Position_TopRight,
-                                    "PositionTopRight.png", delegate { app.Window_Position_TopRight(this); });
+                                    "PositionTopRight.png", delegate { app.Window_Position_TopRight(); });
 
 
             // --------------------------------
@@ -453,7 +461,7 @@ namespace NifrekaNetTraffic
             menuItem_Idx = menuItem_Idx + 1;
             ContextMenu_Add_WithIcon("Window_Position_BottomLeft",
                                     menuItem_Idx, Properties.Resources.Window_Position_BottomLeft,
-                                    "PositionBottomLeft.png", delegate { app.Window_Position_BottomLeft(this); });
+                                    "PositionBottomLeft.png", delegate { app.Window_Position_BottomLeft(); });
 
             // --------------------------------
             // Window_Position_BottomRight
@@ -461,7 +469,7 @@ namespace NifrekaNetTraffic
             menuItem_Idx = menuItem_Idx + 1;
             ContextMenu_Add_WithIcon("Window_Position_BottomRight",
                                     menuItem_Idx, Properties.Resources.Window_Position_BottomRight,
-                                    "PositionBottomRight.png", delegate { app.Window_Position_BottomRight(this); });
+                                    "PositionBottomRight.png", delegate { app.Window_Position_BottomRight(); });
 
 
             // --------------------------------
@@ -498,6 +506,13 @@ namespace NifrekaNetTraffic
 
             app.MenuItemSetCheckedFlag("WindowLog_context_SyncLogs", syncLogs);
         }
+
+        private void checkBox_AutoScroll_ON_OFF(bool flag)
+        {
+            checkBox_AutoScroll.IsChecked = flag;
+            app.MenuItemSetCheckedFlag("WindowLog_context_SyncLogs", flag);
+        }
+
 
         // ========================================================
         private void ContextMenu_CheckForUpdateAuto()
@@ -575,7 +590,7 @@ namespace NifrekaNetTraffic
 
                 image.Source = bi;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // throw;
             }
@@ -662,10 +677,10 @@ namespace NifrekaNetTraffic
 
             if (isVisibile_Received_Sent_Columns == true)
             {
-                gridViewColumn_BytesReceived.Width = 80;
+                gridViewColumn_BytesReceived.Width = 100;
                 gvch_BytesReceived.IsEnabled = true;
 
-                gridViewColumn_BytesSent.Width = 80;
+                gridViewColumn_BytesSent.Width = 100;
                 gvch_BytesSent.IsEnabled = true;
 
             }
@@ -679,9 +694,13 @@ namespace NifrekaNetTraffic
             }
         }
 
+
         // ========================================================
+        void ScrollBar_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            checkBox_AutoScroll_ON_OFF(false);
 
-
+        }
 
         // ========================================================
     }

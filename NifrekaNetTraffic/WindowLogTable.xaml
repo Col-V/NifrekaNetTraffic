@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:NifrekaNetTraffic"
         xmlns:p="clr-namespace:NifrekaNetTraffic.Properties"
         mc:Ignorable="d"
-        Title="NifrekaNetTraffic - LogTable" 
+        Title="NifrekaNetTraffic : LogTable" 
         
         Height="350" 
         Width="410" 
@@ -44,7 +44,11 @@
                            />
 
 
-            <CheckBox Grid.Row="1" Grid.Column="0" x:Name="checkBox_AutoScroll" Content="{x:Static p:Resources.wind_table_AutoScroll}" HorizontalAlignment="Left" Margin="5,1,5,1" VerticalAlignment="Center" IsChecked="True" Foreground="White" Checked="checkBox_AutoScroll_Checked"/>
+            <CheckBox Grid.Row="1" Grid.Column="0" x:Name="checkBox_AutoScroll" 
+                      Content="{x:Static p:Resources.wind_table_AutoScroll}" 
+                      HorizontalAlignment="Left" Margin="5,1,5,1" VerticalAlignment="Center" 
+                      IsChecked="True" Foreground="White" 
+                      Checked="checkBox_AutoScroll_Checked"/>
 
             
 
@@ -58,60 +62,32 @@
         <ListView x:Name="listViewLog" 
                 Margin="0,55,0,0" 
                 SelectionMode="Extended"                
-                ScrollViewer.CanContentScroll="True" 
+                ScrollViewer.CanContentScroll="True"                  
+                VirtualizingStackPanel.IsVirtualizing="True"
+                VirtualizingStackPanel.VirtualizationMode="Recycling"                
                 FontFamily="Consolas" 
                 ScrollViewer.HorizontalScrollBarVisibility="Auto" 
                 MouseLeftButtonUp="listViewLog_MouseLeftButtonUp" 
                 SelectionChanged="listViewLog_SelectionChanged" 
-               
                 >
 
+            
+            
             <ListView.Resources>
                 <ResourceDictionary>
                     <ResourceDictionary.MergedDictionaries>
                         <ResourceDictionary Source="Resources/NifrekaTheme/ListViewResourceDictionary.xaml" />
                     </ResourceDictionary.MergedDictionaries>
 
-                    <!-- =============================================
-                    <Style TargetType="GridViewColumnHeader">
-                        <Setter Property="Visibility" Value="Collapsed" />
+                    <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+                        <EventSetter Event="PreviewMouseDown" Handler="ScrollBar_PreviewMouseDown"/>
                     </Style>
-                     -->
 
                 </ResourceDictionary>
             </ListView.Resources>
 
             <ListView.View>
                 <GridView x:Name="gvlistview" AllowsColumnReorder="true"  >
-
-                    <!-- ============================================= -->
-
-                    <!-- ============================================= -->
-
-                    <!-- =============================================
-                    <GridViewColumn x:Name="gridViewColumn_Id"  >
-                        <GridViewColumnHeader x:Name="gvch_Id" 
-                                      Padding="6,0,25,0"
-                                      VerticalContentAlignment="Center"
-                                      HorizontalContentAlignment="Stretch" 
-                                      Template="{DynamicResource GridViewColumnHeaderControlTemplate1}" 
-                                      BorderThickness="0,1,1,1"  HorizontalAlignment="Stretch" 
-                                    >
-                            <GridViewColumnHeader.Content>
-                                <StackPanel>
-                                    <TextBlock Text="Id" FontWeight="Bold" HorizontalAlignment="Left"  />
-                                </StackPanel>
-                            </GridViewColumnHeader.Content>
-                        </GridViewColumnHeader>
-
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Path=Id}" FontWeight="Normal" HorizontalAlignment="Left"  />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    
-                     -->
 
                     <!-- ============================================= -->
                     <GridViewColumn x:Name="gridViewColumn_DateTimeTicks"  >
@@ -200,47 +176,6 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <!-- ============================================= 
-                    <GridViewColumn x:Name="gridViewColumn_Label"  >
-                        <GridViewColumnHeader x:Name="gvch_Label" 
-                                      Padding="6,0,5,0"
-                                      VerticalContentAlignment="Top"
-                                      HorizontalContentAlignment="Stretch" 
-                                      Template="{DynamicResource GridViewColumnHeaderControlTemplate1}" 
-                                      BorderThickness="0,1,1,1"  HorizontalAlignment="Stretch" MinHeight="21" 
-                                    >
-                            <GridViewColumnHeader.Content>
-                                <StackPanel>
-                                    <TextBlock Text=" " FontWeight="Bold" HorizontalAlignment="Right" Padding="0,0,0,5"  />
-
-
-                                    <Grid HorizontalAlignment="Right">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-
-                                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Total" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,0,0,0"  />
-                                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Hist" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,0,0,0"  />
-
-                                    </Grid>
-
-                                    <TextBlock Text=" " FontWeight="Bold" HorizontalAlignment="Right" Margin="0,10,0,0"  />
-                                </StackPanel>
-                            </GridViewColumnHeader.Content>
-                        </GridViewColumnHeader>
-
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                     -->
                     <!-- ============================================= -->
                     <GridViewColumn x:Name="gridViewColumn_BytesReceivedInterval"  >
                         <GridViewColumnHeader x:Name="gvch_BytesReceivedInterval" 
@@ -435,15 +370,8 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <!-- ============================================= -->
 
                     <!-- ============================================= -->
-
-                    <!-- ============================================= -->
-
-
-
-
                     <!-- ============================================= -->
                     <GridViewColumn x:Name="gridViewColumn_BytesReceived"  >
                         <GridViewColumnHeader x:Name="gvch_BytesReceived" Content="BytesReceived"
@@ -462,9 +390,8 @@
                         
                     </GridViewColumn>
 
-                    
-                    
-                    
+
+                    <!-- ============================================= -->
                     <GridViewColumn x:Name="gridViewColumn_BytesSent"  >
                         <GridViewColumnHeader x:Name="gvch_BytesSent" Content="BytesSent"
 											            Padding="6,0,6,0"

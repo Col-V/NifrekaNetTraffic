@@ -14,35 +14,26 @@ namespace NifrekaNetTraffic
     // ###############################################################
     public class NifrekaNetTrafficSettings
     {
-        public double WindowLogTable_DefaultHeight = 325;
-        public double WindowLogGraph_DefaultHeight = 310;
+        public double WindowLogGraph_DefaultWidth = 455;
+        public double WindowLogGraph_DefaultHeight = 335;
+
+        public double WindowLogTable_DefaultWidth = 455;
+        public double WindowLogTable_DefaultHeight = 335;
+        
+
 
 
         // ========================
         // WindowMain
         // ========================
 
-        private double left_WindowMain;
-        public double Left_WindowMain
-        {
-            get { return left_WindowMain; }
-            set { left_WindowMain = value; }
-        }
-
+       
         // ==============================
-        private double top_WindowMain;
-        public double Top_WindowMain
+        private bool topmost_WindowLogGraph;
+        public bool Topmost_WindowLogGraph
         {
-            get { return top_WindowMain; }
-            set { top_WindowMain = value; }
-        }
-
-        // ==============================
-        private bool topmost_WindowMain;
-        public bool Topmost_WindowMain
-        {
-            get { return topmost_WindowMain; }
-            set { topmost_WindowMain = value; }
+            get { return topmost_WindowLogGraph; }
+            set { topmost_WindowLogGraph = value; }
         }
 
         // ========================
@@ -65,7 +56,7 @@ namespace NifrekaNetTraffic
         }
 
         // ==============================
-        private double width_WindowLogTable = 445;
+        private double width_WindowLogTable = 455;
         public double Width_WindowLogTable
         {
             get { return width_WindowLogTable; }
@@ -139,15 +130,29 @@ namespace NifrekaNetTraffic
             set { checkForUpdateAuto = value; }
         }
 
+        // ==============================
+        private ViewVariant viewVariant = ViewVariant.Both;
+        public ViewVariant ViewVariant
+        {
+            get { return viewVariant; }
+            set { viewVariant = value; }
+        }
+
+        // ==============================
+        private Corner lastCorner = Corner.BottomRight;
+        public Corner LastCorner
+        {
+            get { return lastCorner; }
+            set { lastCorner = value; }
+        }
+
 
         // =================
         // ctor
         // =================
         public NifrekaNetTrafficSettings()
         {
-            this.top_WindowMain = 0;
-            this.left_WindowMain = 0;
-            this.topmost_WindowMain = false;
+
         }
 
         // =====================================
@@ -155,6 +160,11 @@ namespace NifrekaNetTraffic
         {
             height_WindowLogTable = WindowLogTable_DefaultHeight;
             height_WindowLogGraph = WindowLogGraph_DefaultHeight;
+        }
+        public void SetDefaultWidth()
+        {
+            width_WindowLogTable = WindowLogTable_DefaultWidth;
+            width_WindowLogGraph = WindowLogGraph_DefaultWidth;
         }
 
         // =====================================
@@ -195,21 +205,9 @@ namespace NifrekaNetTraffic
             {
                 switch (label)
                 {
-                    case "Left_WindowMain":
+                    case "Topmost_WindowLogGraph":
                         {
-                            this.Left_WindowMain = br.ReadDouble();
-                            break;
-                        }
-
-                    case "Top_WindowMain":
-                        {
-                            this.Top_WindowMain = br.ReadDouble();
-                            break;
-                        }
-                    
-                    case "Topmost_WindowMain":
-                        {
-                            this.Topmost_WindowMain = br.ReadBoolean();
+                            this.topmost_WindowLogGraph = br.ReadBoolean();
                             break;
                         }
 
@@ -284,6 +282,18 @@ namespace NifrekaNetTraffic
                             break;
                         }
 
+                    case "ViewVariant":
+                        {
+                            this.ViewVariant = (ViewVariant)br.ReadInt32();
+                            break;
+                        }
+
+                    case "LastCorner":
+                        {
+                            this.LastCorner = (Corner)br.ReadInt32();
+                            break;
+                        }
+
                     default:
                         break;
                 }
@@ -305,12 +315,10 @@ namespace NifrekaNetTraffic
 
                 using (BinaryWriter bw = new BinaryWriter(File.Open(filepath, FileMode.Create)))
                 {
-                    int dataCount = 14;
+                    int dataCount = 16;
                     bw.Write((int)dataCount);
-
-                    bw.Write("Left_WindowMain"); bw.Write(this.Left_WindowMain);
-                    bw.Write("Top_WindowMain"); bw.Write(this.Top_WindowMain);                   
-                    bw.Write("Topmost_WindowMain"); bw.Write(this.Topmost_WindowMain);
+                 
+                    bw.Write("Topmost_WindowLogGraph"); bw.Write(this.Topmost_WindowLogGraph);
 
                     bw.Write("Left_WindowLogTable"); bw.Write(this.Left_WindowLogTable);
                     bw.Write("Top_WindowLogTable"); bw.Write(this.Top_WindowLogTable);
@@ -325,6 +333,10 @@ namespace NifrekaNetTraffic
                     bw.Write("VisibleAtStart_WindowLogGraph"); bw.Write(this.VisibleAtStart_WindowLogGraph);
 
                     bw.Write("CheckForUpdateAuto"); bw.Write(this.CheckForUpdateAuto);
+
+                    bw.Write("ViewVariant"); bw.Write((int)this.ViewVariant);
+
+                    bw.Write("LastCorner"); bw.Write((int)this.LastCorner);
 
                 }
             }

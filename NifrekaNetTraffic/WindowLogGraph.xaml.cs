@@ -21,8 +21,6 @@ using System.Windows.Threading;
 
 namespace NifrekaNetTraffic
 {
-    
-
     // ###############################################################
     public partial class WindowLogGraph : Window
     {
@@ -35,9 +33,6 @@ namespace NifrekaNetTraffic
         private int plotHeight;
 
         public int labelWidth = 100;
-
-        private WriteableBitmap wBitmap;
-        private System.Drawing.Graphics graphics;
 
         // calc max
         private long max_Received = 0;
@@ -66,6 +61,7 @@ namespace NifrekaNetTraffic
         }
 
         public bool dataUnit_useBit = true;
+        ViewVariant viewVariant;
 
         // ========================
         // ctor
@@ -86,6 +82,9 @@ namespace NifrekaNetTraffic
             this.Top = app.nifrekaNetTrafficSettings.Top_WindowLogGraph;           
             this.Width = app.nifrekaNetTrafficSettings.Width_WindowLogGraph;
             this.Height = app.nifrekaNetTrafficSettings.Height_WindowLogGraph;
+
+            
+            viewVariant = this.app.nifrekaNetTrafficSettings.ViewVariant;
 
             this.Loaded += new RoutedEventHandler(this.Window_Loaded);
             this.Closing += new System.ComponentModel.CancelEventHandler(this.Window_Closing);
@@ -110,13 +109,15 @@ namespace NifrekaNetTraffic
             this.Height = height;
         }
 
+        
+
 
         bool loaded = false;
         // ========================================================
         private void Window_Loaded(object sender, RoutedEventArgs e)
         // ========================================================
         {
-            loaded = true;
+            SetViewVariant();
 
             pixelWidth = (int)logGraphics_Received.ActualWidth;
             pixelHeight = (int)logGraphics_Received.ActualHeight;
@@ -127,9 +128,19 @@ namespace NifrekaNetTraffic
             logGraphics_Received.InitGraph(this, DataDirection.Received, System.Drawing.Color.Cyan);
             logGraphics_Sent.InitGraph(this, DataDirection.Sent, System.Drawing.Color.Magenta);
 
-            MenuItemSetCheckedFlag(GetMenuItem_Idx("ContextMenu_CheckForUpdateAuto"), app.nifrekaNetTrafficSettings.CheckForUpdateAuto);
+            UpdateMenuChecks();
 
             CalcStartEndOffset();
+
+            loaded = true;
+            app.DispatcherTimer_Start();
+        }
+
+
+        private void UpdateMenuChecks()
+        {
+            MenuItemSetCheckedFlag(GetMenuItem_Idx("ContextMenu_CheckForUpdateAuto"), app.nifrekaNetTrafficSettings.CheckForUpdateAuto);
+
         }
 
         // ========================================================
@@ -140,21 +151,49 @@ namespace NifrekaNetTraffic
             app.nifrekaNetTrafficSettings.Left_WindowLogGraph = this.Left;
             app.nifrekaNetTrafficSettings.Width_WindowLogGraph = this.ActualWidth;
             app.nifrekaNetTrafficSettings.Height_WindowLogGraph = this.ActualHeight;
+
+
+            if (app.windowLogTable != null)
+            {
+                app.nifrekaNetTrafficSettings.VisibleAtStart_WindowLogTable = true;
+            }
+            else
+            {
+                app.nifrekaNetTrafficSettings.VisibleAtStart_WindowLogTable = false;
+            }
+
         }
 
         // ========================================================
         private void Window_Closed(object sender, EventArgs e)
         // ========================================================
         {
-            if (graphics != null)
-            {
-                graphics.Dispose();
-            }
+            app.DispatcherTimer_Stop();
 
             DoDispose();
-
-            app.UnregisterWindow(this);
+       
+            WriteLog();
+            app.CloseAllWindows();
+            WriteSettings();
         }
+
+
+        // ========================================================
+        private void WriteLog()
+        {
+            app.logList.WriteToFile();
+        }
+
+        // ========================================================
+        private void WriteSettings()
+        {
+            app.nifrekaNetTrafficSettings.Top_WindowLogGraph = this.Top;
+            app.nifrekaNetTrafficSettings.Left_WindowLogGraph = this.Left;
+            app.nifrekaNetTrafficSettings.Topmost_WindowLogGraph = this.Topmost;
+
+            app.nifrekaNetTrafficSettings.WriteSettingsData();
+        }
+
 
         // ========================================================
         private void CalcStartEndOffset()
@@ -305,10 +344,32 @@ namespace NifrekaNetTraffic
                     {
                        UpdateGraphSent();
                     }
+
+                    UpdateCompact();
                 }
                     
             }
             
+        }
+
+        // ========================================================
+        private void UpdateCompact()
+        {
+            if (app.logList.Count > 0)
+            {
+                int idx = app.logList.Count - 1;
+                LogListItem recentLogListItem = app.logList.ElementAt(idx);
+
+                textBlock_Bytes_Received.Text = recentLogListItem.BytesReceived.ToString("#,##0") + "  B";
+                textBlock_Bytes_Sent.Text = recentLogListItem.BytesSent.ToString("#,##0") + "  B";
+
+                long bytesReceived_Interval = recentLogListItem.BytesReceivedInterval;
+                long bytesSent_Interval = recentLogListItem.BytesSentInterval;
+
+                textBlock_Bytes_Received_Interval.Text = bytesReceived_Interval.ToString("#,##0") + "  B";
+                textBlock_Bytes_Sent_Interval.Text = bytesSent_Interval.ToString("#,##0") + "  B";
+
+            }
         }
 
         // ========================================================
@@ -331,6 +392,14 @@ namespace NifrekaNetTraffic
 
         // ========================================================
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (isResizing == false)
+            {
+                // DoResize();
+            }
+        }
+
+        private void grid_ViewGraph_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (isResizing == false)
             {
@@ -530,6 +599,56 @@ namespace NifrekaNetTraffic
                                 menuItem_Idx, Properties.Resources.WindowLog_context_SyncLogs,
                                 delegate { WindowLog_context_SyncLogs(); });
 
+
+            // --------------------------------
+            // Separator
+            // --------------------------------
+            menuItem_Idx = menuItem_Idx + 1;
+            Contextmenu_addSeparator();
+
+
+
+            // --------------------------------
+            // WindowLogGraph_View_Graph
+            // --------------------------------
+            menuItem_Idx = menuItem_Idx + 1;
+            ContextMenu_Add("WindowLogGraph_View_Graph",
+                                menuItem_Idx, Properties.Resources.WindowLogGraph_View_Graph,
+                                delegate { WindowLogGraph_View_Graph(); });
+
+            // --------------------------------
+            // WindowLogGraph_View_Small
+            // --------------------------------
+            menuItem_Idx = menuItem_Idx + 1;
+            ContextMenu_Add("WindowLogGraph_View_Small",
+                                menuItem_Idx, Properties.Resources.WindowLogGraph_View_Small,
+                                delegate { WindowLogGraph_View_Small(); });
+
+            // --------------------------------
+            // WindowLogGraph_View_Both
+            // --------------------------------
+            menuItem_Idx = menuItem_Idx + 1;
+            ContextMenu_Add("WindowLogGraph_View_Both",
+                                menuItem_Idx, Properties.Resources.WindowLogGraph_View_Both,
+                                delegate { WindowLogGraph_View_Both(); });
+
+            // --------------------------------
+            // Separator
+            // --------------------------------
+            menuItem_Idx = menuItem_Idx + 1;
+            Contextmenu_addSeparator();
+
+
+            // --------------------------------
+            // ContextMenu_OpenTable
+            // --------------------------------
+            menuItem_Idx = menuItem_Idx + 1;
+            ContextMenu_Add("ContextMenu_OpenTable",
+                                menuItem_Idx, Properties.Resources.ContextMenu_OpenTable,
+                                delegate { app.Do_Open_WindowLogTable(); });
+
+
+
             // --------------------------------
             // Separator
             // --------------------------------
@@ -543,7 +662,7 @@ namespace NifrekaNetTraffic
             menuItem_Idx = menuItem_Idx + 1;
             ContextMenu_Add_WithIcon("Window_Position_TopLeft",
                                     menuItem_Idx, Properties.Resources.Window_Position_TopLeft,
-                                    "PositionTopLeft.png", delegate { app.Window_Position_TopLeft(this); });
+                                    "PositionTopLeft.png", delegate { app.Window_Position_TopLeft(); });
 
 
             // --------------------------------
@@ -552,7 +671,7 @@ namespace NifrekaNetTraffic
             menuItem_Idx = menuItem_Idx + 1;
             ContextMenu_Add_WithIcon("Window_Position_TopRight",
                                     menuItem_Idx, Properties.Resources.Window_Position_TopRight,
-                                    "PositionTopRight.png", delegate { app.Window_Position_TopRight(this); });
+                                    "PositionTopRight.png", delegate { app.Window_Position_TopRight(); });
 
 
             // --------------------------------
@@ -561,7 +680,7 @@ namespace NifrekaNetTraffic
             menuItem_Idx = menuItem_Idx + 1;
             ContextMenu_Add_WithIcon("Window_Position_BottomLeft",
                                     menuItem_Idx, Properties.Resources.Window_Position_BottomLeft,
-                                    "PositionBottomLeft.png", delegate { app.Window_Position_BottomLeft(this); });
+                                    "PositionBottomLeft.png", delegate { app.Window_Position_BottomLeft(); });
 
             // --------------------------------
             // Window_Position_BottomRight
@@ -569,7 +688,7 @@ namespace NifrekaNetTraffic
             menuItem_Idx = menuItem_Idx + 1;
             ContextMenu_Add_WithIcon("Window_Position_BottomRight",
                                     menuItem_Idx, Properties.Resources.Window_Position_BottomRight,
-                                    "PositionBottomRight.png", delegate { app.Window_Position_BottomRight(this); });
+                                    "PositionBottomRight.png", delegate { app.Window_Position_BottomRight(); });
 
             // --------------------------------
             // Separator
@@ -619,6 +738,133 @@ namespace NifrekaNetTraffic
 
 
         // ========================================================
+        // ========================================================
+        private void WindowLogGraph_View_Graph()
+        {
+            this.viewVariant = ViewVariant.Graph;
+            SetViewVariant();
+        }
+
+        private void WindowLogGraph_View_Small()
+        {
+            this.viewVariant = ViewVariant.Small;
+            SetViewVariant();
+        }
+
+        private void WindowLogGraph_View_Both()
+        {
+            this.viewVariant = ViewVariant.Both;
+            SetViewVariant();
+        }
+
+
+        // ========================================================
+        private void ClearVariantMenuChecks()
+        {
+            MenuItemSetCheckedFlag(GetMenuItem_Idx("WindowLogGraph_View_Graph"), false);
+            MenuItemSetCheckedFlag(GetMenuItem_Idx("WindowLogGraph_View_Small"), false);
+            MenuItemSetCheckedFlag(GetMenuItem_Idx("WindowLogGraph_View_Both"), false);
+        }
+
+        // ========================================================
+        public void SetViewVariant()
+        {
+            ClearVariantMenuChecks();
+
+            switch (this.viewVariant)
+            {
+                case ViewVariant.Graph:
+                    {
+                        Do_WindowLogGraph_View_Graph();
+                        MenuItemSetCheckedFlag(GetMenuItem_Idx("WindowLogGraph_View_Graph"), true);
+                        this.Title = Properties.Resources.Window_Title_Graph;
+                        break;
+                    }
+                case ViewVariant.Small:
+                    {
+                        Do_WindowLogGraph_View_Small();
+                        MenuItemSetCheckedFlag(GetMenuItem_Idx("WindowLogGraph_View_Small"), true);
+                        this.Title = Properties.Resources.Window_Title_Small;
+                        break;
+                    }
+                case ViewVariant.Both:
+                    {
+                        Do_WindowLogGraph_View_Both();
+                        MenuItemSetCheckedFlag(GetMenuItem_Idx("WindowLogGraph_View_Both"), true);
+                        this.Title = Properties.Resources.Window_Title_GraphAndSmall;
+                        break;
+                    }
+            }
+        }
+
+        // ========================================================
+        // ========================================================
+        private void Do_WindowLogGraph_View_Graph()
+        {
+            this.WindowStyle = WindowStyle.SingleBorderWindow;
+            this.ResizeMode = ResizeMode.CanResize;
+            this.MinHeight = 230;
+
+            this.SizeToContent = SizeToContent.Manual;
+
+            if (this.ActualHeight < MinHeight)
+            {
+                this.Height = MinHeight;
+            }
+
+            grid_ViewGraph.Visibility = Visibility.Visible;
+            rowDefinition_Graph.Height = new GridLength(1, GridUnitType.Star);
+            border_ViewSmall.Visibility = Visibility.Collapsed;
+
+            this.viewVariant = ViewVariant.Graph;
+            app.nifrekaNetTrafficSettings.ViewVariant = ViewVariant.Graph;
+        }
+
+        // ========================================================
+        private void Do_WindowLogGraph_View_Small()
+        {
+            this.WindowStyle = WindowStyle.None;
+            this.ResizeMode = ResizeMode.NoResize;
+
+            this.MinHeight = 0;
+
+            this.SizeToContent = SizeToContent.Height;
+
+            this.Width = app.nifrekaNetTrafficSettings.WindowLogGraph_DefaultWidth;
+            border_ViewSmall.Visibility = Visibility.Visible;
+            grid_ViewGraph.Visibility = Visibility.Collapsed;
+            rowDefinition_Graph.Height = new GridLength(0, GridUnitType.Star);
+
+            this.viewVariant = ViewVariant.Small;
+            app.nifrekaNetTrafficSettings.ViewVariant = ViewVariant.Small;
+        }
+
+        // ========================================================
+        public void Do_WindowLogGraph_View_Both()
+        {
+            this.WindowStyle = WindowStyle.SingleBorderWindow;
+            this.ResizeMode = ResizeMode.CanResize;
+            this.MinHeight = 250;
+
+            this.SizeToContent = SizeToContent.Manual;
+
+            if (this.ActualHeight < MinHeight)
+            {
+                this.Height = MinHeight;
+            }
+
+            border_ViewSmall.Visibility = Visibility.Visible;
+
+            grid_ViewGraph.Visibility = Visibility.Visible;
+            rowDefinition_Graph.Height = new GridLength(1, GridUnitType.Star);
+
+            this.viewVariant = ViewVariant.Both;
+            app.nifrekaNetTrafficSettings.ViewVariant = ViewVariant.Both;
+
+        }
+
+
+        // ========================================================
         // ContextMenu Utils
         // ========================================================
         private void Contextmenu_addSeparator()
@@ -664,7 +910,7 @@ namespace NifrekaNetTraffic
 
                 image.Source = bi;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // throw;
             }
@@ -794,6 +1040,115 @@ namespace NifrekaNetTraffic
         {
             this.isRunning = true;
         }
+
+
+        // ========================================================
+ 
+
+        // ========================================================
+        bool isMouseOverImageGraph = false;
+        private void image_Graph_MouseEnter(object sender, MouseEventArgs e)
+        {
+            border_Graph.BorderBrush = Brushes.Cyan;
+            isMouseOverImageGraph = true;
+            this.Cursor = Cursors.Arrow;
+        }
+
+        private void image_Graph_MouseLeave(object sender, MouseEventArgs e)
+        {
+            border_Graph.BorderBrush = Brushes.White;
+            isMouseOverImageGraph = false;
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void image_Graph_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            border_Graph.BorderBrush = Brushes.Red;
+        }
+        private void image_Graph_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            WindowLogGraph_View_Both();
+            border_Graph.BorderBrush = Brushes.White;
+        }
+
+        // ========================================================
+        bool isMouseOverImageTable = false;
+        private void image_Table_MouseEnter(object sender, MouseEventArgs e)
+        {
+            border_Table.BorderBrush = Brushes.Cyan;
+            isMouseOverImageTable = true;
+            this.Cursor = Cursors.Arrow;
+        }
+
+        private void image_Table_MouseLeave(object sender, MouseEventArgs e)
+        {
+            border_Table.BorderBrush = Brushes.White;
+            isMouseOverImageTable = false;
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void image_Table_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            border_Table.BorderBrush = Brushes.Red;
+        }
+
+        private void image_Table_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            app.Do_Open_WindowLogTable();
+            border_Table.BorderBrush = Brushes.White;
+        }
+
+
+        // ========================================================
+        private void border_ViewSmall_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (isMouseOverImageGraph || isMouseOverImageTable)
+            {
+                if (isMouseOverImageGraph)
+                {
+                    sender = image_Graph;
+                    image_Graph_MouseLeftButtonDown(sender, e);
+                }
+
+                if (isMouseOverImageTable)
+                {
+                    sender = image_Table;
+                    image_Table_MouseLeftButtonDown(sender, e);
+                }
+            }
+            else
+            {
+                if (e.ButtonState == MouseButtonState.Pressed)
+                {
+                    // isMouseButtonState_Pressed = true;
+                    this.Cursor = Cursors.SizeAll;
+                    this.DragMove();
+                }
+
+            }
+        }
+
+        // ========================================================
+        private void border_ViewSmall_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isMouseOverImageGraph || isMouseOverImageTable)
+            {
+                this.Cursor = Cursors.Arrow;
+            }
+            else
+            {
+                this.Cursor = Cursors.Hand;
+            }
+        }
+
+        private void border_ViewSmall_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Arrow;
+        }
+
+        // ========================================================
+
+
 
 
 

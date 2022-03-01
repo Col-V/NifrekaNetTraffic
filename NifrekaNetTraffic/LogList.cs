@@ -70,7 +70,8 @@ namespace NifrekaNetTraffic
             set { maxBytesPerInterval_Sent = value; }
         }
 
-        
+
+
 
         // ===========================
         // ctor
@@ -88,7 +89,7 @@ namespace NifrekaNetTraffic
         }
 
         // =========================================
-        public void Calc_Statistics()
+        public void Calc_TotalsAndMax()
         {
             this.bytesReceivedLog = 0;
             this.bytesSentTotal = 0;
@@ -155,7 +156,7 @@ namespace NifrekaNetTraffic
                 {
                     this.RemoveAt(0);
                 }
-            }          
+            }
         }
 
         // =========================================
@@ -202,7 +203,7 @@ namespace NifrekaNetTraffic
 
                                 this.Add(logListItem);
                             }
-                            Calc_Statistics();
+                            Calc_TotalsAndMax();
                         }
 
                     }
@@ -349,14 +350,15 @@ namespace NifrekaNetTraffic
 
         public string DataTime_Str
         {
-            get {
+            get
+            {
 
                 DateTime dt = new DateTime(dataTimeTicks);
                 string dt_str = dt.ToString(Properties.Resources.LogList_DateTimeFormat);
 
                 return dt_str;
             }
-            set {  }
+            set { }
         }
 
         // ===============

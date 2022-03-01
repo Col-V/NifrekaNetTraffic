@@ -130,7 +130,7 @@ namespace NifrekaNetTraffic
                                 Show_DialogNewVersionAvailable(buildNumber_Server_Value.ToString(), buildNumber_Installed.ToString());
                             }
 
-                            if (buildNumber_Server_Value == buildNumber_Installed)
+                            if (buildNumber_Server_Value <= buildNumber_Installed)
                             {
                                 if (notifyOnlyNewVersion == false)
                                 {

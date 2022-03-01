@@ -28,8 +28,9 @@ namespace NifrekaNetTraffic
 
         public WindowLogGraph windowLogGraph;
         public WindowLogTable windowLogTable;
-        public WindowMain windowMain;
 
+        public Corner lastCorner = Corner.BottomRight;
+        
 
         // ========================
         // ctor
@@ -86,6 +87,7 @@ namespace NifrekaNetTraffic
             
         }
 
+        // ========================================================
         private void CleanupOldDatafiles()
         {
             Delete_File(Const.NifrekaNetTraffic_Settings_PATH_Old_v1);
@@ -109,6 +111,7 @@ namespace NifrekaNetTraffic
             }
         }
 
+        // ========================================================
         public void DispatcherTimer_Start()
         {
             if (dispatcherTimer != null)
@@ -236,99 +239,45 @@ namespace NifrekaNetTraffic
 
             if (File.Exists(filepath) == true)
             {
-                nifrekaNetTrafficSettings.ReadSettingsData();
+                nifrekaNetTrafficSettings.ReadSettingsData();               
                 firstRun = false;
             }
             else
             {
                 firstRun = true;
             }
-        }
 
-        
-
-
-        // ========================================================
-        private void DispatcherTimer_Tick(object sender, EventArgs e)
-        // ========================================================
-        {
-            DoGuiUpdate();
+            lastCorner = nifrekaNetTrafficSettings.LastCorner;
         }
 
         // ========================================================
-        private void DoGuiUpdate()
-        // ========================================================
+        private void FirstRunInit()
         {
-            if (selectedNetAdapter != null)
+            System.Windows.Forms.Screen screen = NifrekaScreenUtil.GetScreen_By_Mouse();
+
+            if (screen != null)
             {
-                if (selectedNetAdapter.networkInterface != null)
-                {
-                    DateTime dtNow = DateTime.Now;
-                    long nowTicks = dtNow.Ticks;
+                nifrekaNetTrafficSettings.Width_WindowLogGraph = nifrekaNetTrafficSettings.WindowLogGraph_DefaultWidth;
+                nifrekaNetTrafficSettings.Height_WindowLogGraph = nifrekaNetTrafficSettings.WindowLogGraph_DefaultHeight;
 
-                    long bytesReceived = selectedNetAdapter.BytesReceived;
-                    long bytesSent = selectedNetAdapter.BytesSent;
+                nifrekaNetTrafficSettings.Top_WindowLogGraph = screen.WorkingArea.Top 
+                                                                + screen.WorkingArea.Height 
+                                                                - nifrekaNetTrafficSettings.WindowLogGraph_DefaultHeight;
 
-                    long bytesReceived_Interval = bytesReceived - bytesReceived_Previously;
-                    long bytesSent_Interval = bytesSent - bytesSent_Previously;
+                nifrekaNetTrafficSettings.Left_WindowLogGraph = screen.WorkingArea.Left 
+                                                                + screen.WorkingArea.Width 
+                                                                - nifrekaNetTrafficSettings.WindowLogGraph_DefaultWidth;
 
-                    if (bytesReceived > 0
-                        ||
-                        bytesSent > 0
-                        )
-                    {
-                        int stop = 99;
-                    }
+                // ===
 
-                    if (bytesReceived_Interval < 0
-                        ||
-                        bytesSent_Interval < 0
-                        )
-                    {
-                        int stop = 99;
-                    }
-                    else
-                    {
-                        // =====
-                        // Update windowMain
-                        if (windowMain != null)
-                        {
-                            windowMain.GuiUpdate(bytesReceived,
-                                                bytesSent,
-                                                bytesReceived_Previously,
-                                                bytesSent_Previously);
-                        }
+                nifrekaNetTrafficSettings.Width_WindowLogTable = nifrekaNetTrafficSettings.WindowLogGraph_DefaultWidth;
+                nifrekaNetTrafficSettings.Height_WindowLogTable = nifrekaNetTrafficSettings.WindowLogTable_DefaultHeight;
 
-                        // =====
-                        // Update windowLogGraph
-                        if (windowLogGraph != null)
-                        {
-                            windowLogGraph.UpdateGraph();
-                        }
+                nifrekaNetTrafficSettings.Top_WindowLogTable = nifrekaNetTrafficSettings.Top_WindowLogGraph
+                                                                - nifrekaNetTrafficSettings.Height_WindowLogGraph;
 
-                        // =====
-                        // for Log
+                nifrekaNetTrafficSettings.Left_WindowLogTable = nifrekaNetTrafficSettings.Left_WindowLogGraph;
 
-                        LogListItem logListItem = new LogListItem(nowTicks,
-                                                                bytesReceived,
-                                                                bytesSent,
-                                                                bytesReceived_Interval,
-                                                                bytesSent_Interval);
-                        logList.AddItem(logListItem);
-
-                        logList.BytesReceivedTotal = bytesReceived;
-                        logList.BytesSentTotal = bytesSent;
-
-                        Window_LogTable_ScrollToEnd();
-
-                        previousTicks = nowTicks;
-                        bytesReceived_Previously = bytesReceived;
-                        bytesSent_Previously = bytesSent;
-
-                        // AdjustWindowLeftToFitOnScreen();
-                    }
-
-                }
             }
 
         }
@@ -337,26 +286,26 @@ namespace NifrekaNetTraffic
         // ========================================================
         private void OpenWindows()
         {
-            windowMain = new WindowMain();
-            windowMain.Show();
-
             if (firstRun)
             {
-                MoveWindowsToCorner(windowMain, Corner.BottomRight);
+                FirstRunInit();
+
+                Do_Open_WindowLogGraph();
+                Do_Open_WindowLogTable();
             }
 
             else
             {
+                Do_Open_WindowLogGraph();
+
                 if (nifrekaNetTrafficSettings.VisibleAtStart_WindowLogTable == true)
                 {
                     Do_Open_WindowLogTable();
                 }
 
-                if (nifrekaNetTrafficSettings.VisibleAtStart_WindowLogGraph == true)
-                {
-                    Do_Open_WindowLogGraph();
-                }
             }
+
+            windowLogGraph.Activate();
 
         }
 
@@ -370,7 +319,7 @@ namespace NifrekaNetTraffic
             }
             else
             {
-                if (windowLogTable.WindowState == WindowState.Minimized)
+                if (windowLogTable.WindowState != WindowState.Normal)
                 {
                     windowLogTable.WindowState = WindowState.Normal;
                 }
@@ -412,17 +361,6 @@ namespace NifrekaNetTraffic
                     windowLogTable = null;
                 }
             }
-            if (windowLogGraph != null)
-            {
-                if (window.Equals(windowLogGraph))
-                {
-                    nifrekaNetTrafficSettings.Left_WindowLogGraph = windowLogGraph.Left;
-                    nifrekaNetTrafficSettings.Top_WindowLogGraph = windowLogGraph.Top;
-                    nifrekaNetTrafficSettings.Width_WindowLogGraph = windowLogGraph.ActualWidth;
-                    nifrekaNetTrafficSettings.Height_WindowLogGraph = windowLogGraph.ActualHeight;
-                    windowLogGraph = null;
-                }
-            }
 
         }
 
@@ -444,9 +382,9 @@ namespace NifrekaNetTraffic
         // ========================================================
         public void Do_Exit()
         {
-            if (windowMain != null)
+            if (windowLogGraph != null)
             {
-                windowMain.Close();
+                windowLogGraph.Close();
             }
         }
 
@@ -461,10 +399,74 @@ namespace NifrekaNetTraffic
             }
             if (windowLogGraph != null)
             {
-                windowLogGraph.Close();
+                // windowLogGraph.Close();
             }
  
         }
+
+        // ========================================================
+        private void DispatcherTimer_Tick(object sender, EventArgs e)
+        // ========================================================
+        {
+            DoGuiUpdate();
+        }
+
+        // ========================================================
+        private void DoGuiUpdate()
+        // ========================================================
+        {
+            if (selectedNetAdapter != null)
+            {
+                if (selectedNetAdapter.networkInterface != null)
+                {
+                    DateTime dtNow = DateTime.Now;
+                    long nowTicks = dtNow.Ticks;
+
+                    long bytesReceived = selectedNetAdapter.BytesReceived;
+                    long bytesSent = selectedNetAdapter.BytesSent;
+
+                    long bytesReceived_Interval = bytesReceived - bytesReceived_Previously;
+                    long bytesSent_Interval = bytesSent - bytesSent_Previously;
+
+                    if (bytesReceived_Interval < 0
+                        ||
+                        bytesSent_Interval < 0
+                        )
+                    {
+                    }
+                    else
+                    {
+                        LogListItem logListItem = new LogListItem(nowTicks,
+                                                                bytesReceived,
+                                                                bytesSent,
+                                                                bytesReceived_Interval,
+                                                                bytesSent_Interval);
+                        logList.AddItem(logListItem);
+
+                        logList.BytesReceivedTotal = bytesReceived;
+                        logList.BytesSentTotal = bytesSent;
+
+                        // =====
+                        // Update windowLogGraph
+                        if (windowLogGraph != null)
+                        {
+                            windowLogGraph.UpdateGraph();
+                        }
+
+                        Window_LogTable_ScrollToEnd();
+
+                        previousTicks = nowTicks;
+                        bytesReceived_Previously = bytesReceived;
+                        bytesSent_Previously = bytesSent;
+
+                        // AdjustWindowLeftToFitOnScreen();
+                    }
+
+                }
+            }
+
+        }
+
 
 
         // ========================================================
@@ -502,22 +504,11 @@ namespace NifrekaNetTraffic
         // ========================================================
         public void ClearLog()
         {
-            if (windowMain != null)
-            {
-                windowMain.WindowLogGraph_DoPause();
-            }
-
             this.logList.ClearList();
 
             if (windowLogTable != null)
             {
                 windowLogTable.ListViewLog_Update();
-            }
-            
-
-            if (windowMain != null)
-            {
-                windowMain.WindowLogGraph_DoContinue();
             }
             
         }
@@ -536,6 +527,24 @@ namespace NifrekaNetTraffic
         {
             var dialog = new WindowAbout();
             dialog.ShowDialog();
+        }
+
+        // ========================================================
+        public void ContextMenu_GotoHomePage()
+        {
+            try
+            {
+                var url = "https://nifreka.nl/nnt/";
+                var sInfo = new System.Diagnostics.ProcessStartInfo(url)
+                {
+                    UseShellExecute = true,
+                };
+                System.Diagnostics.Process.Start(sInfo);
+            }
+            catch (Exception)
+            {
+                // throw;
+            }
         }
 
         public UpdateChecker updateChecker;
@@ -566,10 +575,6 @@ namespace NifrekaNetTraffic
         // ========================================================
         public void MenuItemSetCheckedFlag(String key, bool value)
         {
-            if (windowMain != null)
-            {
-                windowMain.SetCheckedFlag(key, value);
-            }
             if (windowLogGraph != null)
             {
                 windowLogGraph.SetCheckedFlag(key, value);
@@ -580,23 +585,6 @@ namespace NifrekaNetTraffic
             }
         }
 
-        // ========================================================
-        public void ContextMenu_GotoHomePage()
-        {
-            try
-            {
-                var url = "https://nifreka.nl/nnt/";
-                var sInfo = new System.Diagnostics.ProcessStartInfo(url)
-                {
-                    UseShellExecute = true,
-                };
-                System.Diagnostics.Process.Start(sInfo);
-            }
-            catch (Exception)
-            {
-                // throw;
-            }
-        }
 
         // ========================================================
         // ========================================================
@@ -623,15 +611,6 @@ namespace NifrekaNetTraffic
 
         }
 
-        public void Window_LogTable_SetSelectionRange(int idx_Start, int idx_End)
-        {
-            if (windowLogGraph != null)
-            {
-                windowLogTable.ListViewLog_SetSelectionRange(idx_Start, idx_End);
-            }
-        }
-
-
         public void Window_LogGraph_ScrollToSelectedIndex(int idx)
         {
             if (windowLogGraph != null)
@@ -640,11 +619,6 @@ namespace NifrekaNetTraffic
             }
         }
 
-
-
-
-
-
         // ========================================================
         // ========================================================
         //
@@ -652,128 +626,90 @@ namespace NifrekaNetTraffic
         //
         // ========================================================
         // ========================================================
-        private void Do_MoveWindow_to_Corner_TopLeft(Window window)
+
+        public void Window_Position_TopLeft()
         {
-            MoveWindow_to_Corner(window, Corner.TopLeft);
+            MoveWindowsToCorner(Corner.TopLeft);
         }
 
-        // ===========================================
-        private void Do_MoveWindow_to_Corner_TopRight(Window window)
+        public void Window_Position_TopRight()
         {
-            MoveWindow_to_Corner(window, Corner.TopRight);
+            MoveWindowsToCorner(Corner.TopRight);
         }
 
-        // ===========================================
-        private void Do_MoveWindow_to_Corner_BottomLeft(Window window)
+        public void Window_Position_BottomLeft()
         {
-            MoveWindow_to_Corner(window, Corner.BottomLeft);
+            MoveWindowsToCorner(Corner.BottomLeft);
         }
 
-        // ===========================================
-        private void Do_MoveWindow_to_Corner_BottomRight(Window window)
+        public void Window_Position_BottomRight()
         {
-            MoveWindow_to_Corner(window, Corner.BottomRight);
-        }
-
-
-        public void Window_Position_TopLeft(Window window)
-        {
-            MoveWindowsToCorner(window, Corner.TopLeft);
-        }
-
-        public void Window_Position_TopRight(Window window)
-        {
-            MoveWindowsToCorner(window, Corner.TopRight);
-        }
-
-        public void Window_Position_BottomLeft(Window window)
-        {
-            MoveWindowsToCorner(window, Corner.BottomLeft);
-        }
-
-        public void Window_Position_BottomRight(Window window)
-        {
-            MoveWindowsToCorner(window, Corner.BottomRight);
+            MoveWindowsToCorner(Corner.BottomRight);
         }
 
 
         // ========================================================
-        public void MoveWindowsToCorner(Window window, Corner corner)
+        public void MoveWindowsToCorner(Corner corner)
         {
-            window = windowMain;
+            if (windowLogGraph.WindowState != WindowState.Normal)
+            {
+                windowLogGraph.WindowState = WindowState.Normal;
+            }
 
-            MoveWindow_to_Corner(window, corner);
+            lastCorner = corner;
+            nifrekaNetTrafficSettings.LastCorner = corner;  
+
+            nifrekaNetTrafficSettings.SetDefaultHeight();
+            nifrekaNetTrafficSettings.SetDefaultWidth();
+
+            windowLogGraph.SizeToContent = SizeToContent.Manual;
+
+            windowLogGraph.Width = nifrekaNetTrafficSettings.WindowLogGraph_DefaultWidth;
+            windowLogGraph.Height = nifrekaNetTrafficSettings.WindowLogGraph_DefaultHeight;
+
+            windowLogGraph.SetViewVariant();
+
+            MoveWindow_to_Corner(windowLogGraph, corner);
 
             // wait for redraw
             Dispatcher.Invoke(new Action(() => { }), DispatcherPriority.Render, null);
 
-            nifrekaNetTrafficSettings.SetDefaultHeight();
 
-            nifrekaNetTrafficSettings.Left_WindowLogGraph = window.Left;
-            nifrekaNetTrafficSettings.Width_WindowLogGraph = window.ActualWidth;
-
-            nifrekaNetTrafficSettings.Left_WindowLogTable = window.Left;
-            nifrekaNetTrafficSettings.Width_WindowLogTable = window.ActualWidth;
-
-            if (corner == Corner.BottomLeft || corner == Corner.BottomRight)
-            {
-                nifrekaNetTrafficSettings.Top_WindowLogGraph = window.Top - nifrekaNetTrafficSettings.Height_WindowLogGraph;
-                nifrekaNetTrafficSettings.Top_WindowLogTable = window.Top - nifrekaNetTrafficSettings.Height_WindowLogGraph 
-                                                                          - nifrekaNetTrafficSettings.Height_WindowLogTable;
-            }
-
-            if (corner == Corner.TopLeft || corner == Corner.TopRight)
-            {
-                nifrekaNetTrafficSettings.Top_WindowLogGraph = window.Top + window.ActualHeight;
-                nifrekaNetTrafficSettings.Top_WindowLogTable = window.Top + window.ActualHeight 
-                                                                              + nifrekaNetTrafficSettings.Height_WindowLogGraph;
-            }
-
-
-
-            nifrekaNetTrafficSettings.VisibleAtStart_WindowLogTable = true;
-            nifrekaNetTrafficSettings.VisibleAtStart_WindowLogGraph = true;
 
             // ==============
-            if (windowLogTable == null)
+            if (windowLogTable != null)
             {
-                Do_Open_WindowLogTable();
-            }
-            else
-            {
-                windowLogTable.SetWindowPosAndSize(window.Left,
-                                                    nifrekaNetTrafficSettings.Top_WindowLogTable,
-                                                    nifrekaNetTrafficSettings.Width_WindowLogTable,
-                                                    nifrekaNetTrafficSettings.Height_WindowLogTable);
-                windowLogTable.Activate();
+                if (windowLogTable.WindowState != WindowState.Normal)
+                {
+                    windowLogTable.WindowState = WindowState.Normal;
+                }
+
+                windowLogTable.Left = windowLogGraph.Left;
+                windowLogTable.Width = windowLogGraph.ActualWidth;
+                windowLogTable.Height = nifrekaNetTrafficSettings.WindowLogTable_DefaultHeight;
+
+                if (corner == Corner.TopLeft || corner == Corner.TopRight)
+                {
+                    windowLogTable.Top = windowLogGraph.Top + windowLogGraph.ActualHeight;
+                }
+                else
+                {
+                    windowLogTable.Top = windowLogGraph.Top - windowLogTable.ActualHeight;
+                }
             }
 
             // ==============
-            if (windowLogGraph == null)
-            {
-                Do_Open_WindowLogGraph();
-            }
-            else
-            {
-                windowLogGraph.SetWindowPosAndSize(window.Left,
-                                                    nifrekaNetTrafficSettings.Top_WindowLogGraph,
-                                                    nifrekaNetTrafficSettings.Width_WindowLogGraph,
-                                                    nifrekaNetTrafficSettings.WindowLogGraph_DefaultHeight);
-                windowLogGraph.Activate();
-            }
+            windowLogGraph.Activate();
 
         }
 
 
 
-        private Corner corner = Corner.BottomRight;
         // ========================================================
-        public void MoveWindow_to_Corner(Window window, Corner corner)
+        private void MoveWindow_to_Corner(Window window, Corner corner)
         // ========================================================
         {
-            this.corner = corner;
-
-            System.Windows.Forms.Screen screen = NifrekaScreenUtil.GetScreen_By_WindowCenter(window);
+            System.Windows.Forms.Screen screen = NifrekaScreenUtil.GetScreen_By_Mouse();
 
             if (screen != null)
             {
