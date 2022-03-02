@@ -94,6 +94,9 @@ namespace NifrekaNetTraffic
 
             Delete_File(Const.NifrekaNetTraffic_Settings_PATH_Old_pre42);
             Delete_File(Const.NifrekaNetTraffic_Log_PATH_Old_pre42);
+
+            Delete_File(Const.NifrekaNetTraffic_Settings_PATH_Old_pre44);
+            Delete_File(Const.NifrekaNetTraffic_Log_PATH_Old_pre44);
         }
 
         private void Delete_File(string filepath)
