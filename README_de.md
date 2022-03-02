@@ -6,6 +6,13 @@ Build 45\
 
 [Download Programm](https://github.com/Col-V/NifrekaNetTraffic/releases)
 
+
+---
+
+| Readme_en | Readme_de|
+| --- | --- |
+|  [![uk-flag-80x44](https://user-images.githubusercontent.com/32561354/156458311-1e0ad6b0-903f-4b26-90c6-b61a81c84454.png)](https://github.com/Col-V/NifrekaNetTraffic/blob/main/README.md) |  [![de-flag-80x44](https://user-images.githubusercontent.com/32561354/156453083-e689c968-4eab-4d73-8912-f0bd9333c0fd.png)](https://github.com/Col-V/NifrekaNetTraffic/blob/main/README_de.md)  |
+
 ---
 **Systemvoraussetzung:**\
 Windows 10 oder Windows 11\
@@ -14,12 +21,6 @@ NET 6.0 Runtime
 \
 **Entwicklungsumgebung:**\
 NifrekaNetTraffic wird mit Visual Studio 2022 und NET 6.0/C#/WPF entwickelt.
-
----
-
-| Readme_en | Readme_de|
-| --- | --- |
-|  [![uk-flag-80x44](https://user-images.githubusercontent.com/32561354/156458311-1e0ad6b0-903f-4b26-90c6-b61a81c84454.png)](https://github.com/Col-V/NifrekaNetTraffic/blob/main/README.md) |  [![de-flag-80x44](https://user-images.githubusercontent.com/32561354/156453083-e689c968-4eab-4d73-8912-f0bd9333c0fd.png)](https://github.com/Col-V/NifrekaNetTraffic/blob/main/README_de.md)  |
 
 ---
 
