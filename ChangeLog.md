@@ -8,6 +8,10 @@ Build 44\
 
 ----------------------------------------------
 
+**2022-03-01 - 1.3 - 45**\
+LogTable:\
+Fixed: Topmost option was killed in build 44
+
 **2022-03-01 - 1.3 - 44**\
 LogTable: Now uses VirtualizingStackPanel: faster, smoother scrolling, less memory consumption\
 Cosmetic changes
