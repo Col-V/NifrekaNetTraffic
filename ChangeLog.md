@@ -9,7 +9,7 @@ Build 45\
 ----------------------------------------------
 
 **2022-03-02 - 1.3 - 45**\
-LogTable:\
+Main window:\
 Fixed: Topmost option was killed in build 44
 
 **2022-03-01 - 1.3 - 44**\
