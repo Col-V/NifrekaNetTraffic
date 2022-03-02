@@ -2,9 +2,9 @@
 
 Current Version:
 
-Version 1.2\
-Build 43\
-2022-02-24
+Version 1.3\
+Build 44\
+2022-03-01
 
 Changelog is here:
 https://nifreka.nl/nnt/changelog.php
