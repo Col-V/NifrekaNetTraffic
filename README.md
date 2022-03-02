@@ -1,7 +1,10 @@
 # NifrekaNetTraffic
 Version 1.3\
 Build 45\
-2022-03-02
+2022-03-02\
+[ChangeLog](https://github.com/Col-V/NifrekaNetTraffic/blob/main/ChangeLog.md)
+
+[Download program](https://github.com/Col-V/NifrekaNetTraffic/releases)
 
 ---
 **System requirements:**\
