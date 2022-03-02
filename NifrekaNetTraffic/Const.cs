@@ -13,7 +13,7 @@ namespace NifrekaNetTraffic
     public static class Const
     {
         public const string NifrekaNet_Version= "1.3";
-        public const int NifrekaNet_Build = 44;
+        public const int NifrekaNet_Build = 45;
         public const string NifrekaNet_CopyRight= "(c) 2022 nifreka.nl";
 
         // =========================================

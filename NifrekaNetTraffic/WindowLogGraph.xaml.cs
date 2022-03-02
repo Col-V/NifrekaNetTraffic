@@ -128,6 +128,8 @@ namespace NifrekaNetTraffic
             logGraphics_Received.InitGraph(this, DataDirection.Received, System.Drawing.Color.Cyan);
             logGraphics_Sent.InitGraph(this, DataDirection.Sent, System.Drawing.Color.Magenta);
 
+            this.Topmost = app.nifrekaNetTrafficSettings.Topmost_WindowLogGraph;
+
             UpdateMenuChecks();
 
             CalcStartEndOffset();
@@ -139,6 +141,7 @@ namespace NifrekaNetTraffic
 
         private void UpdateMenuChecks()
         {
+            MenuItemSetCheckedFlag(GetMenuItem_Idx("Topmost_WindowLogGraph"), this.Topmost);
             MenuItemSetCheckedFlag(GetMenuItem_Idx("ContextMenu_CheckForUpdateAuto"), app.nifrekaNetTrafficSettings.CheckForUpdateAuto);
 
         }
@@ -696,6 +699,22 @@ namespace NifrekaNetTraffic
             menuItem_Idx = menuItem_Idx + 1;
             Contextmenu_addSeparator();
 
+
+            // --------------------------------
+            // ContextMenu_Topmost
+            // --------------------------------
+            menuItem_Idx = menuItem_Idx + 1;
+            ContextMenu_Add("Topmost_WindowLogGraph",
+                                menuItem_Idx, Properties.Resources.ContextMenu_Topmost,
+                                delegate { ContextMenu_Topmost(); });
+
+
+            // --------------------------------
+            // Separator
+            // --------------------------------
+            menuItem_Idx = menuItem_Idx + 1;
+            Contextmenu_addSeparator();
+
             // --------------------------------
             // contextmenu_exit
             // --------------------------------
@@ -734,6 +753,17 @@ namespace NifrekaNetTraffic
             app.nifrekaNetTrafficSettings.CheckForUpdateAuto = !app.nifrekaNetTrafficSettings.CheckForUpdateAuto;
 
             app.MenuItemSetCheckedFlag("ContextMenu_CheckForUpdateAuto", app.nifrekaNetTrafficSettings.CheckForUpdateAuto);
+        }
+
+        private void ContextMenu_Topmost()
+        {
+            Do_Toggle_Topmost();
+        }
+
+        private void Do_Toggle_Topmost()
+        {
+            this.Topmost = !this.Topmost;
+            app.MenuItemSetCheckedFlag("Topmost_WindowLogGraph", this.Topmost);
         }
 
 
