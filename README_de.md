@@ -2,7 +2,7 @@
 Version 1.3\
 Build 45\
 2022-03-02\
-[ChangeLog](https://github.com/Col-V/NifrekaNetTraffic/blob/main/ChangeLog.md)
+[Änderungshistorie](https://github.com/Col-V/NifrekaNetTraffic/blob/main/ChangeLog_de.md)
 
 [Download Programm](https://github.com/Col-V/NifrekaNetTraffic/releases)
 
