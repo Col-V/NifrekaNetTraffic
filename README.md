@@ -14,6 +14,12 @@ NifrekaNetTraffic is developed using Visual Studio 2022 and NET 6.0/C#/WPF.
 
 ---
 
+| Readme_en | Readme_de|
+| --- | --- |
+|  [![uk-flag-80x44](https://user-images.githubusercontent.com/32561354/156458311-1e0ad6b0-903f-4b26-90c6-b61a81c84454.png)](https://github.com/Col-V/NifrekaNetTraffic/blob/main/README.md) |  [![de-flag-80x44](https://user-images.githubusercontent.com/32561354/156453083-e689c968-4eab-4d73-8912-f0bd9333c0fd.png)](https://github.com/Col-V/NifrekaNetTraffic/blob/main/README_de.md)  |
+
+---
+
 NifrekaNetTraffic is a simple WPF desktop program for Windows 10 and Windows 11 and displays information about the current network interface traffic in compact, graphical and tablular representation.
 
 NifrekaNetTraffic uses very little CPU resources, so it can run even on less powerful elder computers.\
