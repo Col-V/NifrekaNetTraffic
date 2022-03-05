@@ -144,12 +144,12 @@ Eine Digitale Signatur ist also keine Garantie für Unbedenklichkeit!
 \
 \
 **Download/Installation/Deinstallation:**\
-NifrekaNetTraffic can be downloaded as a zip archive "NifrekaNetTraffic.zip" here:
+NifrekaNetTraffic kann als Zip-Archiv "NifrekaNetTraffic.zip" hier heruntergeladen werden:  \
 https://github.com/Col-V/NifrekaNetTraffic/releases
 
 Alle Programmbestandteile von NifrekaNetTraffic sind nach bestem Wissen und Gewissen virenfrei.
 
-Wer möchte kann hier den Source Code von NifrekaNetTraffic herunterladen und das Programm selber compilieren.
+Wer möchte kann hier den Source Code von NifrekaNetTraffic herunterladen und das Programm selber compilieren.  \
 https://github.com/Col-V/NifrekaNetTraffic
 
 Bevor NifrekaNetTraffic benutzt werden kann, muss der Inhalt des Zip-Archivs "NifrekaNetTraffic.zip" entpackt werden. Nach dem Entpacken kann das Zip-Archivs "NifrekaNetTraffic.zip" gelöscht werden.
