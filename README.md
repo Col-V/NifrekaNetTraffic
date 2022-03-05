@@ -138,12 +138,12 @@ A digital signature is therefore no guarantee of harmlessness!
 \
 \
 **Download/Install/Uninstall:**\
-NifrekaNetTraffic can be downloaded as a zip archive "NifrekaNetTraffic.zip" here:
+NifrekaNetTraffic can be downloaded as a zip archive "NifrekaNetTraffic.zip" here: \
 https://github.com/Col-V/NifrekaNetTraffic/releases
 
 All program components of NifrekaNetTraffic are virus-free to the best of our knowledge and belief.
 
-To verify, you may want to have a look at the source code of NifrekaNetTraffic or compile it yourself. The source code is available here:
+To verify, you may want to have a look at the source code of NifrekaNetTraffic or compile it yourself. The source code is available here: \
 https://github.com/Col-V/NifrekaNetTraffic
 
 Before NifrekaNetTraffic can be used, the contents of the zip archive "NifrekaNetTraffic.zip" must be unpacked.
